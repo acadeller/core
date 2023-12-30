@@ -1,25 +1,43 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "/Users/cesaralvarez/Desktop/astroplate-main",
     "target": "es6",
     "allowJs": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
-    "jsx": "react",
+    "jsx": "preserve",
     "isolatedModules": true,
     "incremental": true,
     "allowSyntheticDefaultImports": true,
-    "types": ["@astrojs/image/client"],
+    "types": [
+      "@astrojs/image/client"
+    ],
     "paths": {
-      "@/components/*": ["./src/layouts/components/*"],
-      "@/shortcodes/*": ["./src/layouts/shortcodes/*"],
-      "@/helpers/*": ["./src/layouts/helpers/*"],
-      "@/partials/*": ["./src/layouts/partials/*"],
-      "@/*": ["./src/*"]
+      "@/components/*": [
+        "./src/layouts/components/*"
+      ],
+      "@/shortcodes/*": [
+        "./src/layouts/shortcodes/*"
+      ],
+      "@/helpers/*": [
+        "./src/layouts/helpers/*"
+      ],
+      "@/partials/*": [
+        "./src/layouts/partials/*"
+      ],
+      "@/*": [
+        "./src/*"
+      ]
     }
   },
-  "include": ["**/*.ts", "**/*.tsx", "**/*.astro"],
-  "exclude": ["node_modules"]
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.astro"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
