@@ -1,4 +1,5 @@
 {
+  "javascript.validate.enable": false,
   "files.associations": {
     "*.mdx": "markdown"
   }

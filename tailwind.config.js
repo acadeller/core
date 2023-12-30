@@ -1,3 +1,9 @@
+import {
+  Inter as Sans,
+  Bitter as Serif,
+  Fira_Code as Mono,
+} from '@next/font/google';
+
 const theme = require("./src/config/theme.json");
 
 let font_base = Number(theme.fonts.font_size.base.replace("px", ""));
@@ -75,8 +81,8 @@ module.exports = {
         h6: h6 + "rem",
       },
       fontFamily: {
-        primary: [fontPrimary, fontPrimaryType],
-        secondary: [fontSecondary, fontSecondaryType],
+        primary: ["Poppins"],
+        secondary: ["Poppins"],
       },
     },
   },
