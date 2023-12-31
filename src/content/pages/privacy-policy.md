@@ -1,30 +1,44 @@
 ---
-title: "Privacy"
+title: "Privacidad"
 meta_title: ""
 description: "this is meta description"
 draft: false
 ---
 
-#### Responsibility of Contributors
+### Política de Privacidad
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus, donec nunc eros, ullamcorper id feugiat quisque aliquam sagittis. Sem turpis sed viverra massa gravida pharetra. Non dui dolor potenti eu dignissim fusce. Ultrices amet, in curabitur a arcu a lectus morbi id. Iaculis erat sagittis in tortor cursus. Molestie urna eu tortor, erat scelerisque eget. Nunc hendrerit sed interdum lacus. Lorem quis viverra sed
+Última actualización: 01/01/2024'
 
-pretium, aliquam sit. Praesent elementum magna amet, tincidunt eros, nibh in leo. Malesuada purus, lacus, at aliquam suspendisse tempus. Quis tempus amet, velit nascetur sollicitudin. At sollicitudin eget amet in. Eu velit nascetur sollicitudin erhdfvssfvrgss eget viverra nec elementum. Lacus, facilisis tristique lectus in.
+Bienvenido/a a acadeller. Tu privacidad es importante para nosotros. Esta Política de Privacidad explica cómo recopilamos, usamos, divulgamos y protegemos la información personal que recopilamos.
 
-#### Gathering of Personal Information
+#### Información de Identificación Personal
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus, donec nunc eros, ullamcorper id feugiat quisque aliquam sagittis. Sem turpis sed viverra massa gravida pharetra. Non dui dolor potenti eu dignissim fusce. Ultrices amet, in curabitur a arcu a lectus morbi id. Iaculis erat sagittis in tortor cursus. Molestie urna eu tortor, erat scelerisque eget. Nunc hendrerit sed interdum lacus. Lorem quis viverra sed
+Cuando visitas nuestro sitio web, podemos recopilar cierta información de identificación personal, como tu nombre, dirección de correo electrónico y otra información que elijas proporcionar.
 
-#### Protection of Personal- Information
+#### Información de Registro
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus, donec nunc eros, ullamcorper id feugiat quisque aliquam sagittis. Sem turpis sed viverra massa gravida pharetra. Non dui dolor potenti eu dignissim fusce. Ultrices amet, in curabitur a arcu a lectus morbi id. Iaculis erat sagittis in tortor cursus.
+Recopilamos información que tu navegador envía cada vez que visitas nuestro sitio web ("Datos de Registro"). Estos Datos de Registro pueden incluir información como la dirección de protocolo de Internet de tu computadora, tipo de navegador, versión del navegador, las páginas de nuestro sitio web que visitas, la hora y fecha de tu visita, el tiempo que pasaste en esas páginas y otras estadísticas.
 
-Molestie urna eu tortor, erat scelerisque eget. Nunc hendrerit sed interdum lacus. Lorem quis viverra sed
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus, donec nunc eros, ullamcorper id feugiat
+#### Uso de la Información
 
-#### Privacy Policy Changes
+Utilizamos la información recopilada para diversos fines, que incluyen:
 
-1. Sll the Themefisher items are designed to be with the latest , We check all
-2. comments that threaten or harm the reputation of any person or organization
-3. personal information including, but limited to, email addresses, telephone numbers
-4. Any Update come in The technology Customer will get automatic Notification.
+- Proporcionar y mantener nuestro sitio web.
+- Notificarte sobre cambios en nuestro sitio web.
+- Brindarte soporte al cliente.
+
+#### Divulgación de la Información
+
+Podemos divulgar tu información personal en las siguientes situaciones:
+
+- Con tu consentimiento.
+- Para cumplir con obligaciones legales.
+- Prevenir o investigar posibles irregularidades en relación con el sitio web.
+
+#### Cookies
+
+Las cookies son archivos con pequeñas cantidades de datos que se almacenan en tu dispositivo. Utilizamos cookies para recopilar información y mejorar nuestro sitio web. Puedes instruir a tu navegador para que rechace todas las cookies o indique cuándo se envía una cookie. Sin embargo, si no aceptas cookies, es posible que no puedas utilizar algunas partes de nuestro sitio web.
+
+#### Cambios a esta Política de Privacidad
+
+Podemos actualizar nuestra Política de Privacidad de vez en cuando. Te notificaremos de cualquier cambio publicando la nueva Política de Privacidad en esta página.
