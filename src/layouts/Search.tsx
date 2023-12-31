@@ -75,7 +75,7 @@ const Search = ({ searchList }: Props) => {
             <div className="flex flex-nowrap">
               <input
                 className="form-input rounded-r-none"
-                placeholder="Search posts"
+                placeholder="Buscar publicaciones"
                 type="search"
                 name="search"
                 value={inputVal}
@@ -91,15 +91,6 @@ const Search = ({ searchList }: Props) => {
           </div>
         </div>
 
-        {/* {inputVal.length > 1 && (
-          <div className="mt-8">
-            Found {searchResults?.length}
-            {searchResults?.length && searchResults?.length === 1
-              ? " result"
-              : " results"}{" "}
-            for '{inputVal}'
-          </div>
-        )} */}
         <div className="row">
           {searchResults?.length < 1 ? (
             <div className="mx-auto pt-5 text-center">
@@ -109,12 +100,12 @@ const Search = ({ searchList }: Props) => {
                 alt="no-search-found"
               />
               <h1 className="h2 mb-4">
-                {inputVal.length < 1 ? "Search Post Here" : "No Search Found!"}
+                {inputVal.length < 1 ? "Busca la publicación que deseas" : "¡No se ha encontrado la búsqueda!"}
               </h1>
               <p>
                 {inputVal.length < 1
-                  ? "Search for posts by title, category, or tag."
-                  : "We couldn't find what you searched for. Try searching again."}
+                  ? "Introduce el nombre del título, categoría, o tag."
+                  : "No pudimos encontrar lo que has buscado. Inténtalo otra vez."}
               </p>
             </div>
           ) : (
