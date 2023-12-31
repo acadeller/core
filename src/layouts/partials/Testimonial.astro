@@ -24,7 +24,7 @@ const { testimonial } = Astro.props;
                     designation: string;
                   }) => (
                     <div class="swiper-slide">
-                      <div class="rounded-lg bg-theme-light px-7 py-10 dark:bg-darkmode-theme-light">
+                      <div class="rounded-lg bg-theme-light px-7 py-10 dark:bg-gray-900">
                         <div class="text-dark dark:text-white">
                           <svg
                             width="33"
@@ -91,7 +91,6 @@ const { testimonial } = Astro.props;
       modules: [Pagination, Autoplay],
       spaceBetween: 24,
       loop: true,
-      loopedSlides: 2,
       centeredSlides: true,
       autoplay: {
         delay: 2500,

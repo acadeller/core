@@ -8,7 +8,7 @@ const { tags, categories, allCategories } = Astro.props;
   <!-- categories -->
   <div class="mb-8">
     <h5 class="mb-6">Categories</h5>
-    <div class="rounded bg-theme-light p-8 dark:bg-darkmode-theme-light">
+    <div class="rounded bg-theme-light p-8 dark:bg-gray-900">
       <ul class="space-y-4">
         {
           categories.map((category: any) => {
@@ -33,7 +33,7 @@ const { tags, categories, allCategories } = Astro.props;
   <!-- tags -->
   <div class="mb-8">
     <h5 class="mb-6">Tags</h5>
-    <div class="rounded bg-theme-light p-6 dark:bg-darkmode-theme-light">
+    <div class="rounded bg-theme-light p-6 dark:bg-gray-900">
       <ul>
         {
           tags.map((tag: any) => {

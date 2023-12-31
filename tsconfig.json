@@ -1,7 +1,7 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "baseUrl": "/Users/cesaralvarez/Desktop/astroplate-main",
+    "baseUrl": "/Users/cesaralvarez/Desktop/core",
     "target": "es6",
     "allowJs": true,
     "strict": true,
