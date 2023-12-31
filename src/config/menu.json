@@ -1,53 +1,41 @@
 {
   "main": [
     {
-      "name": "Home",
-      "url": "/"
+      "name": "Cursos",
+      "url": "/courses"
     },
     {
-      "name": "About",
-      "url": "/about"
+      "name": "Blog",
+      "url": "/blog"
     },
     {
       "name": "Elements",
       "url": "/elements"
     },
     {
-      "name": "Pages",
+      "name": "Acerca de",
       "url": "",
       "hasChildren": true,
       "children": [
         {
-          "name": "Contact",
+          "name": "Contacto",
           "url": "/contact"
         },
         {
-          "name": "Blog",
-          "url": "/blog"
+          "name": "Quiénes somos",
+          "url": "/about"
         },
         {
-          "name": "Authors",
+          "name": "Autores",
           "url": "/authors"
-        },
-        {
-          "name": "Categories",
-          "url": "/categories"
-        },
-        {
-          "name": "Search",
-          "url": "/search"
-        },
-        {
-          "name": "404 Page",
-          "url": "/404"
         }
       ]
     }
   ],
   "footer": [
     {
-      "name": "Elements",
-      "url": "/elements"
+      "name": "Contacto",
+      "url": "/contact"
     },
     {
       "name": "Privacy Policy",
