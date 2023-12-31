@@ -80,7 +80,7 @@
     @apply h-2.5 w-2.5 bg-theme-light opacity-100 dark:bg-gray-900;
 
     &-active {
-      @apply h-4 w-4 bg-primary dark:bg-darkmode-primary;
+      @apply h-4 w-4 bg-yellow-400 dark:bg-yellow-400;
     }
   }
 }
@@ -99,7 +99,7 @@
       @apply px-8 #{!important};
 
       &.active {
-        @apply border-b-[3px] border-dark opacity-100 dark:border-darkmode-primary;
+        @apply border-b-[3px] border-yellow-400 dark:bg-yellow-400;
       }
     }
   }

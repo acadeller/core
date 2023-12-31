@@ -2,15 +2,15 @@
   "main": [
     {
       "name": "Cursos",
-      "url": "/courses"
+      "url": "/cursos"
     },
     {
       "name": "Blog",
       "url": "/blog"
     },
     {
-      "name": "Elements",
-      "url": "/elements"
+      "name": "Elementos",
+      "url": "/elementos"
     },
     {
       "name": "Acerca de",
@@ -19,7 +19,7 @@
       "children": [
         {
           "name": "Contacto",
-          "url": "/contact"
+          "url": "/contacto"
         },
         {
           "name": "Quiénes somos",
@@ -27,7 +27,7 @@
         },
         {
           "name": "Autores",
-          "url": "/authors"
+          "url": "/autores"
         }
       ]
     }
@@ -35,11 +35,11 @@
   "footer": [
     {
       "name": "Contacto",
-      "url": "/contact"
+      "url": "/contacto"
     },
     {
       "name": "Política de Privacidad",
-      "url": "/privacy-policy"
+      "url": "/politica"
     }
   ]
 }

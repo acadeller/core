@@ -128,7 +128,7 @@ const Search = ({ searchList }: Props) => {
                   </h4>
                   <ul className="mb-4">
                     <li className="mr-4 inline-block">
-                      <a href={`/authors/${slugify(item.data.author)}`}>
+                      <a href={`/autores/${slugify(item.data.author)}`}>
                         <FaRegUserCircle
                           className={"-mt-1 mr-2 inline-block"}
                         />
