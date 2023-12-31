@@ -1,8 +1,8 @@
 ---
-title: John Doe
-email: johndoe@email.com
+title: César Álvarez Llaneza
+email: cesaralvrzll@gmail.com
 image: "/images/avatar.png"
-description: this is meta description
+description: Frontend Developer & Founder of acadeller
 social:
   - name: github
     icon: FaGithub
