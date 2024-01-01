@@ -21,7 +21,7 @@ input#nav-toggle:checked ~ #nav-menu {
 }
 
 .navbar-brand {
-  @apply text-xl font-semibold text-dark dark:text-darkmode-dark;
+  @apply text-xl font-semibold text-gray-900 dark:text-darkmode-dark;
   image {
     @apply max-h-full max-w-full;
   }
@@ -36,7 +36,7 @@ input#nav-toggle:checked ~ #nav-menu {
 }
 
 .nav-link {
-  @apply block p-3 font-semibold text-dark transition hover:text-primary dark:text-darkmode-dark lg:px-2 lg:py-3;
+  @apply block p-3 font-semibold text-gray-900 transition hover:text-primary dark:text-darkmode-dark lg:px-2 lg:py-3;
 }
 
 .nav-dropdown {
@@ -52,7 +52,7 @@ input#nav-toggle:checked ~ #nav-menu {
 }
 
 .nav-dropdown-link {
-  @apply block py-1 font-semibold text-dark transition hover:text-primary dark:text-darkmode-text dark:hover:text-darkmode-primary;
+  @apply block py-1 font-semibold text-gray-900 transition hover:text-primary dark:text-darkmode-text dark:hover:text-darkmode-primary;
 }
 
 //theme-switcher

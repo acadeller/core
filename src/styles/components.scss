@@ -13,11 +13,11 @@
 
 // form style
 .form-input {
-  @apply w-full rounded border-transparent bg-theme-light px-6 py-4 text-dark placeholder:text-light focus:border-primary focus:ring-transparent dark:border-darkmode-border dark:bg-gray-900 dark:text-darkmode-light;
+  @apply w-full rounded border-transparent bg-theme-light px-6 py-4 text-gray-900 placeholder:text-light focus:border-primary focus:ring-transparent dark:border-darkmode-border dark:bg-gray-900 dark:text-darkmode-light;
 }
 
 .form-label {
-  @apply mb-4 block font-secondary text-xl font-normal text-dark dark:text-darkmode-light;
+  @apply mb-4 block font-secondary text-xl font-normal text-gray-900 dark:text-darkmode-light;
 }
 
 // social icons
@@ -26,7 +26,7 @@
   li {
     @apply inline-block;
     a {
-      @apply flex h-9 w-9 items-center justify-center rounded bg-primary text-center leading-9 text-white dark:bg-darkmode-primary dark:text-dark;
+      @apply flex h-9 w-9 items-center justify-center rounded bg-primary text-center leading-9 text-white dark:bg-darkmode-primary dark:text-gray-900 hover:bg-yellow-500 dark:hover:bg-yellow-500;
       svg {
         @apply h-5 w-5;
       }
@@ -43,7 +43,7 @@
       @apply mr-3;
     }
     p {
-      @apply font-secondary text-xl font-semibold text-dark dark:text-darkmode-light;
+      @apply font-secondary text-xl font-semibold text-gray-900 dark:text-darkmode-light;
     }
   }
   .notice-body {
@@ -94,7 +94,7 @@
     @apply list-none #{!important};
 
     &-item {
-      @apply cursor-pointer border-b-[3px] border-border py-2 text-lg text-dark opacity-80 dark:border-light;
+      @apply cursor-pointer border-b-[3px] border-border py-2 text-lg text-gray-900 opacity-80 dark:border-light;
       @apply my-0 #{!important};
       @apply px-8 #{!important};
 
@@ -120,7 +120,7 @@
 .accordion {
   @apply mb-6 overflow-hidden rounded-lg border border-border bg-theme-light dark:border-darkmode-border dark:bg-gray-900;
   &-header {
-    @apply flex w-full cursor-pointer items-center justify-between px-8 py-4 text-lg text-dark dark:bg-gray-900 dark:text-darkmode-light;
+    @apply flex w-full cursor-pointer items-center justify-between px-8 py-4 text-lg text-gray-900 dark:bg-gray-900 dark:text-darkmode-light;
   }
   &-icon {
     @apply ml-auto h-[.8em] w-[.8em] rotate-[-90deg] transition-transform duration-200;
@@ -148,7 +148,7 @@
     @apply relative top-1/2 z-50 mx-auto max-w-[90%] -translate-y-1/2 rounded-lg bg-body p-8 dark:bg-darkmode-body;
   }
   &-close {
-    @apply absolute right-3 top-3 h-8 w-8 rounded-full bg-theme-light text-center leading-8 text-dark dark:bg-gray-900 dark:text-darkmode-dark;
+    @apply absolute right-3 top-3 h-8 w-8 rounded-full bg-theme-light text-center leading-8 text-gray-900 dark:bg-gray-900 dark:text-darkmode-dark;
   }
 }
 
@@ -162,15 +162,15 @@
   @apply prose-img:max-w-full prose-img:rounded;
   @apply prose-hr:border-border prose-hr:dark:border-darkmode-border;
   @apply prose-p:text-base prose-p:text-text prose-p:dark:text-darkmode-text;
-  @apply prose-blockquote:rounded-lg prose-blockquote:border prose-blockquote:border-l-[10px] prose-blockquote:border-primary prose-blockquote:bg-theme-light prose-blockquote:px-8 prose-blockquote:py-10 prose-blockquote:font-secondary prose-blockquote:text-2xl prose-blockquote:not-italic prose-blockquote:text-dark prose-blockquote:dark:border-darkmode-primary prose-blockquote:dark:bg-gray-900 prose-blockquote:dark:text-darkmode-light;
+  @apply prose-blockquote:rounded-lg prose-blockquote:border prose-blockquote:border-l-[10px] prose-blockquote:border-primary prose-blockquote:bg-theme-light prose-blockquote:px-8 prose-blockquote:py-10 prose-blockquote:font-secondary prose-blockquote:text-2xl prose-blockquote:not-italic prose-blockquote:text-gray-900 prose-blockquote:dark:border-darkmode-primary prose-blockquote:dark:bg-gray-900 prose-blockquote:dark:text-darkmode-light;
   @apply prose-pre:rounded-lg prose-pre:bg-theme-light prose-pre:dark:bg-gray-900;
   @apply prose-code:px-1 prose-code:text-primary prose-code:dark:text-darkmode-primary;
-  @apply prose-strong:text-dark prose-strong:dark:text-darkmode-text;
+  @apply prose-strong:text-gray-900 prose-strong:dark:text-darkmode-text;
   @apply prose-a:text-text prose-a:underline hover:prose-a:text-primary prose-a:dark:text-darkmode-text hover:prose-a:dark:text-darkmode-primary;
   @apply prose-li:text-text prose-li:dark:text-darkmode-text;
   @apply prose-table:relative prose-table:overflow-hidden prose-table:rounded-lg prose-table:before:absolute prose-table:before:left-0 prose-table:before:top-0 prose-table:before:h-full prose-table:before:w-full prose-table:before:rounded-[inherit] prose-table:before:border prose-table:before:content-[""] prose-table:before:dark:border-darkmode-border;
   @apply prose-thead:border-border prose-thead:bg-theme-light prose-thead:dark:border-darkmode-border prose-thead:dark:bg-gray-900;
-  @apply prose-th:relative prose-th:z-10 prose-th:px-4 prose-th:py-[18px] prose-th:text-dark prose-th:dark:text-darkmode-text;
+  @apply prose-th:relative prose-th:z-10 prose-th:px-4 prose-th:py-[18px] prose-th:text-gray-900 prose-th:dark:text-darkmode-text;
   @apply prose-tr:border-border prose-tr:dark:border-darkmode-border;
   @apply prose-td:relative prose-td:z-10 prose-td:px-3 prose-td:py-[18px] prose-td:dark:text-darkmode-text;
 }
