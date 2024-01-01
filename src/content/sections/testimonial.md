@@ -1,27 +1,33 @@
 ---
 enable: true
-title: "What Users Are Saying About Astroplate"
-description: "Don't just take our word for it - hear from some of our satisfied users!  Check out some of our testimonials below to see what others are saying about Astroplate."
+title: "Lo que los usuarios están diciendo de acadeller"
+description: "¿Quieres saber lo que opinan nuestros estudiantes?
+Esto es lo que opinan algunos de ellos."
 
 # Testimonials
 testimonials:
-  - name: "Marvin McKinney"
-    designation: "Web Designer"
+  - name: "Alexi Danilo A."
+    designation: "Curso portafolio"
     avatar: "/images/avatar-sm.png"
-    content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui iusto illo molestias, assumenda expedita commodi inventore non itaque molestiae voluptatum dolore, facilis sapiente, repellat veniam."
+    content: "Soy estudiante de Ingeniería de Software. Y me parece un buen proyecto para iniciar e ir orientando a quienes quieren aprender."
 
-  - name: "Marvin McKinney"
-    designation: "Web Designer"
+  - name: "Fernando H."
+    designation: "Curso portafolio"
     avatar: "/images/avatar-sm.png"
-    content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui iusto illo molestias, assumenda expedita commodi inventore non itaque molestiae voluptatum dolore, facilis sapiente, repellat veniam."
+    content: "Excelente el tutorial explicado todo al 100%. Os recomiendo encarecidamente a todos a inscribirse al curso."
 
-  - name: "Marvin McKinney"
-    designation: "Web Designer"
+  - name: "Sebastian R."
+    designation: "Curso portafolio"
     avatar: "/images/avatar-sm.png"
-    content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui iusto illo molestias, assumenda expedita commodi inventore non itaque molestiae voluptatum dolore, facilis sapiente, repellat veniam."
+    content: "Me gustó bastante el curso, me mostró una forma de mostrar mi trabajo que no conocía, 100% recomendado."
 
-  - name: "Marvin McKinney"
-    designation: "Web Designer"
+  - name: "Alberto C."
+    designation: "Curso portafolio"
     avatar: "/images/avatar-sm.png"
-    content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui iusto illo molestias, assumenda expedita commodi inventore non itaque molestiae voluptatum dolore, facilis sapiente, repellat veniam."
+    content: "Excelente curso, gracias al profesor muy claro en sus explicaciones, aprendí muchas cosas. Felicitaciones."
+
+  - name: "Damaso C."
+    designation: "Curso portafolio"
+    avatar: "/images/avatar-sm.png"
+    content: "Información muy útil y super fácil de comprender por la excelente forma de explicar del profesor."
 ---
