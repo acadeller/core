@@ -26,12 +26,18 @@ const { banner, features }: Homepage = homepage.data;
 
 <Base>
   <!-- Banner -->
-  <section class="section pt-14">
+  <section class="section pt-32">
     <div class="container">
       <div class="row justify-center">
         <div class="mb-16 text-center lg:col-7">
-          <h1 set:html={markdownify(banner.title)} class="mb-4" />
-          <p set:html={markdownify(banner.content)} class="mb-8" />
+          <h1 class="font-bold leading-none text-6xl xl:max-w-2xl text-gray-800 dark:text-white">
+              <span class="cursor-default font-extrabold text-transparent bg-gradient-to-br bg-clip-text from-yellow-300 via-yellow-500 to-orange-500 dark:from-yellow-300 dark:via-yellow-500 dark:to-orange-500 hover:animate-pulse">
+                  Enciende
+              </span>
+              tu carrera de desarrollador
+          </h1>
+          <!-- <h1 set:html={markdownify(banner.title)} class="mb-4" />-->
+          <p set:html={markdownify(banner.content)} class="mb-8 mt-5" />
           {
             banner.button.enable && (
               <a class="btn btn-primary" href={banner.button.link}>
