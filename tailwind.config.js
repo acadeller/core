@@ -56,6 +56,8 @@ module.exports = {
         border: theme.colors.default.theme_color.border,
         "theme-light": theme.colors.default.theme_color.theme_light,
         "theme-dark": theme.colors.default.theme_color.theme_dark,
+        "midnight": "#18202b",
+        "acadeller": "#fc0",
         darkmode: {
           text: theme.colors.darkmode.text_color.default,
           light: theme.colors.darkmode.text_color.light,
