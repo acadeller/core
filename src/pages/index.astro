@@ -1,12 +1,10 @@
 ---
 import Base from "@/layouts/Base.astro";
 import { markdownify } from "@/lib/utils/textConverter";
-import CallToAction from "@/partials/CallToAction.astro";
+import CallToActionGradient from "@/partials/CallToActionGradient.astro";
 import Testimonial from "@/partials/Testimonial.astro";
 import type { Button, Feature } from "@/types";
-import { Image } from "astro:assets";
 import { getEntry } from "astro:content";
-import { FaCheck } from "react-icons/fa/index.js";
 
 interface Homepage {
   banner: {
@@ -124,6 +122,7 @@ const { banner, features }: Homepage = homepage.data;
   <!-- /Content -->
 
   <!-- Features -->
+  <!--
   {
     features.map((feature, index: number) => (
       <section class={`section-sm ${index % 2 === 0 && "bg-gradient"}`}>
@@ -162,8 +161,9 @@ const { banner, features }: Homepage = homepage.data;
       </section>
     ))
   }
+  -->
   <!-- /Features -->
 
   <Testimonial testimonial={testimonial} />
-  <CallToAction call_to_action={call_to_action} />
+  <CallToActionGradient call_to_action={call_to_action} />
 </Base>
