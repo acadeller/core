@@ -6,7 +6,7 @@ banner:
   image: "/images/banner.png"
   button:
     enable: true
-    label: "Get Started For Free"
+    label: "Empieza ahora"
     link: "https://github.com/zeon-studio/astroplate"
 
 # Features
@@ -23,7 +23,7 @@ features:
       - "**Open-source and free** for personal and commercial use"
     button:
       enable: false
-      label: "Get Started Now"
+      label: "Empieza ahora mismo"
       link: "#"
 
   - title: "Discover the Key Features Of Astro"
