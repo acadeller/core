@@ -16,7 +16,7 @@ const { call_to_action } = Astro.props;
               </radialGradient>
             </defs>
           </svg>
-          <div class="mx-auto max-w-md text-center lg:mx-0 lg:flex-auto lg:py-32 lg:text-left">
+          <div class="mx-auto max-w-md text-center lg:ml-6 lg:mx-0 lg:flex-auto lg:py-32 lg:text-left">
             <h1 class="text-gray-800 dark:text-gray-100 text-4xl font-bold leading-none">¿Preparado para
                 <span class="cursor-default text-transparent bg-gradient-to-br bg-clip-text from-acadeller via-yellow-500 to-orange-500 dark:from-yellow-300 dark:via-yellow-500 dark:to-orange-500 hover:animate-pulse">
                     empezar
@@ -34,8 +34,8 @@ const { call_to_action } = Astro.props;
               )}
             </div>
           </div>
-          <div class="relative mt-16 h-80 lg:mt-8">
-            <img class="absolute left-0 top-0 w-[57rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10" src="https://tailwindui.com/img/component-images/dark-project-app-screenshot.png" alt="App screenshot" width="1824" height="1080" />
+          <div class="w-2/4 h-80">
+            <img class="floating-element" src={call_to_action.data.image} alt="Rocket" />
           </div>
         </div>
       </div>
