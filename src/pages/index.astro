@@ -1,6 +1,7 @@
 ---
 import Base from "@/layouts/Base.astro";
 import { markdownify } from "@/lib/utils/textConverter";
+import { Image } from "astro:assets";
 import CallToActionGradient from "@/partials/CallToActionGradient.astro";
 import Testimonial from "@/partials/Testimonial.astro";
 import type { Button, Feature } from "@/types";
@@ -13,13 +14,16 @@ interface Homepage {
     image: string;
     button: Button;
   };
+  content: {
+    image: string;
+  };
   features: Feature[];
 }
 
 const homepage = await getEntry("homepage", "-index");
 const testimonial = await getEntry("sections", "testimonial");
 const call_to_action = await getEntry("sections", "call-to-action");
-const { banner, features }: Homepage = homepage.data;
+const { banner, content }: Homepage = homepage.data;
 ---
 
 <Base>
@@ -88,7 +92,7 @@ const { banner, features }: Homepage = homepage.data;
         </div>
         </div>
         <div class="-ml-12 -mt-12 p-12 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
-        <img class="w-[48rem] max-w-none rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem]" src="https://tailwindui.com/img/component-images/dark-project-app-screenshot.png" alt="">
+          <img class="w-[48rem] hover:animate-pulse max-w-none rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem]" src={content.image} alt="Content image">
         </div>
         <div class="lg:col-span-2 lg:col-start-1 lg:row-start-2 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
         <div class="lg:pr-4">

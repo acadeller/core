@@ -9,6 +9,10 @@ banner:
     label: "Empieza ahora"
     link: "https://github.com/zeon-studio/astroplate"
 
+# Content
+content:
+  image: "/images/light-code.png"
+
 # Features
 features:
   - title: "What's Included in Astroplate"
