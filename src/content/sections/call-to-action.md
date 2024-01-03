@@ -6,5 +6,5 @@ description: "Experience the future of web development with Astroplate and Astro
 button:
   enable: true
   label: "Empieza ahora mismo"
-  link: "https://github.com/zeon-studio/astroplate"
+  link: "/cursos"
 ---

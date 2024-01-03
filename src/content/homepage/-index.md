@@ -7,7 +7,7 @@ banner:
   button:
     enable: true
     label: "Empieza ahora"
-    link: "https://github.com/zeon-studio/astroplate"
+    link: "/cursos"
 
 # Content
 content:
