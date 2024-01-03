@@ -42,7 +42,7 @@ const { banner, content }: Homepage = homepage.data;
           <p set:html={markdownify(banner.content)} class="mb-8 mt-5" />
           {
             banner.button.enable && (
-              <a class="btn btn-primary" href={banner.button.link}>
+              <a class="btn btn-primary btn-primary-gradient-hover" href={banner.button.link}>
                 {banner.button.label}
               </a>
             )

@@ -1,5 +1,5 @@
 .btn {
-  @apply inline-block rounded border border-transparent px-5 py-2 font-semibold capitalize transition;
+  @apply inline-block rounded px-5 py-2 font-semibold capitalize transition duration-300 hover:scale-105 ease-in-out;
 }
 
 .btn-sm {
@@ -7,7 +7,11 @@
 }
 
 .btn-primary {
-  @apply border-primary bg-primary text-white no-underline dark:border-darkmode-primary dark:bg-white dark:text-gray-900;
+  @apply bg-primary text-white dark:bg-white dark:text-gray-900;
+}
+
+.btn-primary-gradient-hover {
+  @apply hover:bg-gradient-to-r hover:from-yellow-400 hover:to-orange-500;
 }
 
 .btn-outline-primary {
