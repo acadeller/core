@@ -1,20 +1,16 @@
 ---
 title: César Álvarez Llaneza
 email: cesaralvrzll@gmail.com
-image: "/images/avatar.png"
-description: Frontend Developer & Founder of acadeller
+image: "/images/cesar.jpeg"
+description: Frontend Developer y fundador de Acadeller
 social:
   - name: github
     icon: FaGithub
-    link: https://github.com
-
-  - name: twitter
-    icon: FaTwitter
-    link: https://twitter.com
+    link: https://github.com/cesaralvrz
 
   - name: linkedin
     icon: FaLinkedin
-    link: https://linkedin.com
+    link: https://www.linkedin.com/in/cesaralvarezllaneza/
 ---
 
-lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostr navigation et dolore magna aliqua.
+Frontend Developer y fundador de Acadeller
