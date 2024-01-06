@@ -9,27 +9,8 @@
       "url": "/blog"
     },
     {
-      "name": "Elementos",
-      "url": "/elementos"
-    },
-    {
-      "name": "Acerca de",
-      "url": "",
-      "hasChildren": true,
-      "children": [
-        {
-          "name": "Contacto",
-          "url": "/contacto"
-        },
-        {
-          "name": "Quiénes somos",
-          "url": "/about"
-        },
-        {
-          "name": "Autores",
-          "url": "/autores"
-        }
-      ]
+      "name": "Contacto",
+      "url": "/contacto"
     }
   ],
   "footer": [

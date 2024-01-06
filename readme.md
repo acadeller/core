@@ -42,3 +42,29 @@ npm run dev
 ```bash
 npm run build
 ```
+
+## Información adicional
+
+### Urls con desplegable
+
+```json
+{
+  "name": "Acerca de",
+  "url": "",
+  "hasChildren": true,
+  "children": [
+    {
+      "name": "Contacto",
+      "url": "/contacto"
+    },
+    {
+      "name": "Quiénes somos",
+      "url": "/about"
+    },
+    {
+      "name": "Autores",
+      "url": "/autores"
+    }
+  ]
+}
+```
