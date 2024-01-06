@@ -13,7 +13,7 @@ const {
 <a
   href={link}
   target="_blank"
-  class="relative block overflow-hidden rounded-lg border duration-300 hover:scale-105 ease-in-out bg-gray-900 dark:bg-white border-gray-100 p-4 sm:p-6 lg:p-8"
+  class="relative shadow-lg block overflow-hidden rounded-lg duration-300 hover:scale-105 ease-in-out border border-gray-300 dark:border-gray-800 bg-gray-100 dark:bg-gray-900 p-4 sm:p-6 lg:p-8"
 >
   <span
     class="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-yellow-300 to-orange-500"
@@ -21,11 +21,11 @@ const {
 
   <div class="sm:flex sm:justify-between sm:gap-4">
     <div>
-      <h3 class="text-lg font-bold text-white dark:text-gray-800 sm:text-xl">
+      <h3 class="text-lg font-bold dark:text-white text-gray-800 sm:text-xl">
         {title}
       </h3>
 
-      <p class="mt-1 text-xs font-medium text-gray-600">Por: {author}</p>
+      <p class="mt-1 text-xs font-medium text-gray-600 dark:text-gray-500">Por: {author}</p>
     </div>
 
     <!-- Image: <div class="hidden sm:block sm:shrink-0">
@@ -38,20 +38,20 @@ const {
   </div>
 
   <div class="mt-4">
-    <p class="max-w-[40ch] text-sm text-gray-200 dark:text-gray-500">
+    <p class="max-w-[40ch] text-sm dark:text-gray-200 text-gray-500">
       { description }
     </p>
   </div>
 
   <dl class="mt-6 flex gap-4 sm:gap-6">
     <div class="flex flex-col">
-      <dt class="text-sm font-medium text-gray-300 dark:text-gray-600">Precio:</dt>
-      <dd class="text-xs text-gray-200 dark:text-gray-500">{cost}</dd>
+      <dt class="text-sm font-medium dark:text-gray-300 text-gray-600">Precio:</dt>
+      <dd class="text-xs dark:text-gray-200 text-gray-500">{cost}</dd>
     </div>
 
     <div class="flex flex-col">
-      <dt class="text-sm font-medium text-gray-300 dark:text-gray-600">Tags:</dt>
-      <dd class="text-xs text-gray-200 dark:text-gray-500">{tags}</dd>
+      <dt class="text-sm font-medium dark:text-gray-300 text-gray-600">Tags:</dt>
+      <dd class="text-xs dark:text-yellow-300 text-orange-500">{tags}</dd>
     </div>
   </dl>
 </a>
