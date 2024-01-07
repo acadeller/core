@@ -1,9 +1,11 @@
 ---
-title: "Hola soy César"
+title: "Somos Acadeller"
 meta_title: "About"
-description: "this is meta description"
-image: "/images/avatar.png"
+description: "Acadeller description"
+image: "/images/logo.svg"
 draft: false
 ---
 
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis illum nesciunt commodi vel nisi ut alias excepturi ipsum, totam, labore tempora, odit ex iste tempore sed. Fugit voluptatibus perspiciatis assumenda nulla ad nihil, omnis vel, doloremque sit quam autem optio maiores, illum eius facilis et quo consectetur provident dolor similique! Enim voluptatem dicta expedita veritatis repellat dolorum impedit, provident quasi at.
+En acadeller, creemos en el poder transformador de la educación y la tecnología. Somos una pequeña startup comprometida con la misión de impulsar a individuos para que alcancen su máximo potencial en el mundo digital.
+
+En un entorno donde la tecnología evoluciona rápidamente, ofrecemos un espacio acogedor y educativo donde puedes aprender a programar desde cero, construir tu marca personal y dar el primer paso hacia tu carrera profesional en el vasto mundo de la tecnología
