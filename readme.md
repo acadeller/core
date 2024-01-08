@@ -25,27 +25,27 @@
 - npm v9.5+
 - tailwind v3.3+
 
-### 👉 Instalar dependencias
+### ⚙️ Instalar dependencias
 
 ```bash
 npm install
 ```
 
-### 👉 Comando para correr el modo desarrollo
+### ⚙️ Comando para correr el modo desarrollo
 
 ```bash
 npm run dev
 ```
 
-### 👉 Comando para hacer el build
+### ⚙️ Comando para hacer el build
 
 ```bash
 npm run build
 ```
 
-## Información adicional
+## 📚 Información adicional
 
-### Urls con desplegable
+### 🖱️ Urls con desplegable
 
 ```json
 {
