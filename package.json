@@ -1,8 +1,8 @@
 {
-  "name": "astroplate",
+  "name": "acadeller",
   "version": "2.2.0",
-  "description": "Astro and Tailwindcss boilerplate",
-  "author": "zeon.studio",
+  "description": "Enciende tu carrera de desarrollador",
+  "author": "César Álvarez Llaneza",
   "license": "MIT",
   "packageManager": "yarn@1.22.19",
   "scripts": {
