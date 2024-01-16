@@ -19,11 +19,11 @@
 # Tabla de contenidos 💡
 
 - [Resumen](#resumen)
-- [Lanzar el repo](#lanzar)
+- [Lanzar el repo](#lanzar_el_repo)
 - [Comunidad](#comunidad)
 - [Proyecto](#proyecto)
 - [Contribución](#contribución)
-- [Información adicional](#información)
+- [Información adicional](#información_adicional)
 
 # Resumen
 
@@ -71,7 +71,7 @@ npm run build
 
 # Proyecto
 
-<img src="https://c.tenor.com/L4UF8SwSt6YAAAAC/naruto-fight.gif" align="right" alt="Naruto">
+<img src="https://media.giphy.com/media/3o6Ztm25ikO467NGOk/giphy.gif" align="right" alt="Thomas Edison">
 
 ### Ramas:
 
