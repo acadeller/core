@@ -19,7 +19,7 @@
 # Tabla de contenidos 💡
 
 - [Resumen](#resumen)
-- [Lanzar el repo](#lanzar_el_repo)
+- [Empezar](#empezar)
 - [Comunidad](#comunidad)
 - [Proyecto](#proyecto)
 - [Contribución](#contribución)
@@ -31,7 +31,7 @@
 
 Si te interesa [contribuir](#contribución) en este repositorio puedes hacerlo de [esta manera](#contribución).
 
-# Lanzar el repo
+# Empezar
 
 ### 📦 Dependencias
 
@@ -101,8 +101,8 @@ Los cambios serán revisados y si son correctos, serán fusionados en la rama pr
 
 * [César Álvarez Llaneza](https://github.com/cesaralvrz): Fundador de Acadeller.
 
-# Información 📚
+# Información
 
-### Template
+### Template:
 
-![Astroplate](https://github.com/zeon-studio/astroplate) 🚀
+[Astroplate](https://github.com/zeon-studio/astroplate) 🚀
