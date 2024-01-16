@@ -85,7 +85,7 @@ Cualquier persona puede contribuir a este repositorio, invitamos a la comunidad 
 
 ## ¿Cómo contribuir al repositorio? 🤝
 
-No dudes en crear un Pull Request para resolver problemas pequeños. Para problemas o características más grande, es importante abrir primero un 'issue' con dicho problema. Los PRs se realizan a la rama `gedevnin`, todos los PRs que se intenten hacer a la rama `main` serán rechazados.
+No dudes en crear un Pull Request para resolver problemas pequeños. Para problemas o características más grande, es importante abrir primero un 'issue' con dicho problema. Los PRs se realizan a la rama `dev`, todos los PRs que se intenten hacer a la rama `main` serán rechazados.
 
 ### Opción 1 - Arreglar problemas pequeños
 
@@ -93,7 +93,7 @@ Para problemas pequeños, como un error tipográfico o un enlace roto, use el ed
 
 ### Opción 2 - Trabajar en tu propio Fork
 
-Para contribuciones más complejas, cambios grandes o nuevas funciones, debes trabajar en el proyecto desde tu sistema local. Clonando el repositorio y una vez realizados los cambios crear un Pull Request a la rama `genin`.
+Para contribuciones más complejas, cambios grandes o nuevas funciones, debes trabajar en el proyecto desde tu sistema local. Clonando el repositorio y una vez realizados los cambios crear un Pull Request a la rama `dev`.
 
 Los cambios serán revisados y si son correctos, serán fusionados en la rama principal (kage).
 
