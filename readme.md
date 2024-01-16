@@ -19,11 +19,11 @@
 # Tabla de contenidos 💡
 
 - [Resumen](#resumen)
-- [Lanzar el repo](#lanzar)
+- [Lanzar el repo](#lanzar_el_repo)
 - [Comunidad](#comunidad)
 - [Proyecto](#proyecto)
 - [Contribución](#contribución)
-- [Información adicional](#información)
+- [Información](#información)
 
 # Resumen
 
@@ -71,13 +71,13 @@ npm run build
 
 # Proyecto
 
-<img src="https://c.tenor.com/L4UF8SwSt6YAAAAC/naruto-fight.gif" align="right" alt="Naruto">
+<img src="https://media.giphy.com/media/3o6Ztm25ikO467NGOk/giphy.gif" align="right" alt="Thomas Edison">
 
 ### Ramas:
 
 Este repositorio tiene 2 ramas principales:
-1. `kage` - rama de producción.
-2. `genin` - rama de desarrollo.
+1. `main` - rama de producción.
+2. `dev` - rama de desarrollo.
 
 # Contribución
 
@@ -85,7 +85,7 @@ Cualquier persona puede contribuir a este repositorio, invitamos a la comunidad 
 
 ## ¿Cómo contribuir al repositorio? 🤝
 
-No dudes en crear un Pull Request para resolver problemas pequeños. Para problemas o características más grande, es importante abrir primero un 'issue' con dicho problema. Los PRs se realizan a la rama `genin`, todos los PRs que se intenten hacer a la rama `kage` serán rechazados.
+No dudes en crear un Pull Request para resolver problemas pequeños. Para problemas o características más grande, es importante abrir primero un 'issue' con dicho problema. Los PRs se realizan a la rama `gedevnin`, todos los PRs que se intenten hacer a la rama `main` serán rechazados.
 
 ### Opción 1 - Arreglar problemas pequeños
 
@@ -101,8 +101,8 @@ Los cambios serán revisados y si son correctos, serán fusionados en la rama pr
 
 * [César Álvarez Llaneza](https://github.com/cesaralvrz): Fundador de Acadeller.
 
-# Información adicional 📚
+# Información 📚
 
 ### Template
 
-(Astroplate)[https://github.com/zeon-studio/astroplate] 🚀
+![Astroplate](https://github.com/zeon-studio/astroplate) 🚀
