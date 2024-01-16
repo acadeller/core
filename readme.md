@@ -23,7 +23,7 @@
 - [Comunidad](#comunidad)
 - [Proyecto](#proyecto)
 - [Contribución](#contribución)
-- [Información adicional](#información_adicional)
+- [Información](#información)
 
 # Resumen
 
@@ -85,7 +85,7 @@ Cualquier persona puede contribuir a este repositorio, invitamos a la comunidad 
 
 ## ¿Cómo contribuir al repositorio? 🤝
 
-No dudes en crear un Pull Request para resolver problemas pequeños. Para problemas o características más grande, es importante abrir primero un 'issue' con dicho problema. Los PRs se realizan a la rama `genin`, todos los PRs que se intenten hacer a la rama `kage` serán rechazados.
+No dudes en crear un Pull Request para resolver problemas pequeños. Para problemas o características más grande, es importante abrir primero un 'issue' con dicho problema. Los PRs se realizan a la rama `gedevnin`, todos los PRs que se intenten hacer a la rama `main` serán rechazados.
 
 ### Opción 1 - Arreglar problemas pequeños
 
@@ -101,8 +101,8 @@ Los cambios serán revisados y si son correctos, serán fusionados en la rama pr
 
 * [César Álvarez Llaneza](https://github.com/cesaralvrz): Fundador de Acadeller.
 
-# Información adicional 📚
+# Información 📚
 
 ### Template
 
-(Astroplate)[https://github.com/zeon-studio/astroplate] 🚀
+![Astroplate](https://github.com/zeon-studio/astroplate) 🚀
