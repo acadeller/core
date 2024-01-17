@@ -14,10 +14,14 @@ import vue from "@astrojs/vue";
 export default defineConfig({
   buildOptions: {
     esbuild: {
-      resolve: {
-        alias: {
-          "@": "./src",
-        },
+      define: {
+        __VUE_OPTIONS_API__: true,
+        __VUE_PROD_DEVTOOLS__: false,
+      },
+
+      alias: {
+        "@": "./src",
+        "@/*": "./src/*"
       },
     },
   },
