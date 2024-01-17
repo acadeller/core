@@ -95,7 +95,7 @@ Para problemas pequeños, como un error tipográfico o un enlace roto, use el ed
 
 Para contribuciones más complejas, cambios grandes o nuevas funciones, debes trabajar en el proyecto desde tu sistema local. Clonando el repositorio y una vez realizados los cambios crear un Pull Request a la rama `dev`.
 
-Los cambios serán revisados y si son correctos, serán fusionados en la rama principal (kage).
+Los cambios serán revisados y si son correctos, serán fusionados en la rama principal (main).
 
 ## Contribuidores 🏆
 
