@@ -1,7 +1,7 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "baseUrl": "/Users/cesaralvarez/Desktop/core",
+    "baseUrl": "./",
     "target": "es6",
     "allowJs": true,
     "strict": true,
