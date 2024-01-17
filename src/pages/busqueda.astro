@@ -1,6 +1,5 @@
 ---
 import config from "@/config/config.json";
-import Base from "@/layouts/Base.astro";
 import Search from "@/layouts/Search";
 import { getSinglePage } from "@/lib/contentParser.astro";
 
@@ -17,6 +16,4 @@ const searchList = posts.map((item) => ({
 }));
 ---
 
-<Base title={`Search`}>
-  <Search client:load searchList={searchList} />
-</Base>
+<Search client:load searchList={searchList} />
