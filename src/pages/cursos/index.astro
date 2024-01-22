@@ -16,7 +16,7 @@ const courses = await getSinglePage("cursos");
       <div class="row justify-center">
         {
           courses.map((author) => (
-            <div class="mb-14 md:col-6 lg:col-4">
+            <div class="mb-14 md:col-6 lg:col-4 2xl:mt-12">
               <CourseCard data={author} />
             </div>
           ))

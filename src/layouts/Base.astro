@@ -148,10 +148,10 @@ const { title, meta_title, description, image, noindex, canonical } =
     <div class="overflow-hidden">
       <TwSizeIndicator />
       <Header />
-      <main id="main-content">
+      <main id="main-content" class="2xl:min-h-screen">
         <slot />
       </main>
-      <Footer />
+      <Footer class="sticky bottom-0" />
     </div>
   </body>
 </html>
