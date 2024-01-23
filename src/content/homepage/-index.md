@@ -1,7 +1,7 @@
 ---
 # Banner
 banner:
-  title: "The Ultimate Starter Template You Need To Start Your Astro Project"
+  title: "Enciende tu carrera de desarrollador."
   content: "Acadeller proporciona todo lo que necesitas para impulsar tu carrera en el mundo del desarrollo de software."
   image: "/images/banner.png"
   button:
