@@ -33,6 +33,6 @@ features:
       - "Example, example"
     button:
       enable: true
-      label: "Get Started Now"
+      label: "Inicio"
       link: "https://github.com/acadeller"
 ---
