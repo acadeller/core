@@ -1,0 +1,95 @@
+---
+title: "Vite + Vue 3 + Tailwind CSS: Guía de instalación"
+meta_title: "Vite + Vue 3 + Tailwind CSS: Guía de instalación"
+description: "Aprende a instalar y configurar un proyecto con Vite, Vue 3 y Tailwind CSS"
+date: 2024-04-19T05:00:00Z
+image: "/images/vite+vue+tailwind.jpg"
+categories: ["Frontend"]
+author: "César Álvarez Llaneza"
+tags: ["vue", "tailwind", "vite"]
+draft: false
+---
+
+En este tutorial, te guiaremos paso a paso para instalar y configurar Vite con Vue 3 y Tailwind CSS.
+
+Esta poderosa combinación te permitirá crear aplicaciones web modernas de manera eficiente y sencilla.
+
+### Requisitos previos
+
+Antes de empezar, necesitaremos dos cosas:
+- Un editor de código: Visual Studio Code, Vim, etc.
+- Una versión actualizada de Node.js: Lo puedes instalar en su página web (https://nodejs.org/)
+
+## Instalación
+
+### Crear proyecto con Vite
+
+Lo primero que haremos es crear nuestro proyecto con Vite. Abriremos nuestra terminal y nos colocaremos en el directorio donde querramos tener nuestro proyecto. Ejecutamos el siguiente comando:
+
+`npm init -y vite@latest nombre-de-mi-proyecto`
+
+Una vez ejecutado el comando, nos dará la opción de escoger varias opciones:
+- En el framework escogeremos Vue
+- En la variante la que deseemos (en este ejemplo usaremos JavaScript)
+
+### Instalación de Tailwind CSS
+
+Ahora nos dirigimos a nuestro proyecto (ya sea desde la misma terminal o dentro de la terminal del editor de código) y ejecutamos los siguientes comandos para instalar Tailwind CSS:
+
+`npm install -D tailwindcss postcss autoprefixer`
+`npx tailwindcss init -p`
+
+### Configuración de Tailwind CSS
+
+Una vez instalado Tailwind, necesitaremos configurarlo.
+
+Dentro de nuestro archivo `tailwind.config.js` añadiremos los "paths" para que pueda escanerar nuestros archivos:
+
+```js
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{vue,js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+```
+
+### Integración de Tailwind CSS con Vite
+
+Ahora para integrar Tailwind CSS en nuestro proyecto, necesitamos la directivas `@tailwind` en nuestro archivo: `./src/style.css`. Estas directivas importan los estilos básicos, los componentes y las clases de utilidad de Tailwind:
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+## Final
+
+Ya tenemos configurado nuestro entorno con Vite, Vue.js 3 y Tailwind CSS. Para comprobar que todo está funcionando podemos probarlo agregando clases de Tailwind en la app demo de Vue (por ejemplo añadiendo la clase `text-red-500` a algún texto) y correr el proyecto en modo desarrollo:
+
+`npm run dev`
+
+## Sigue avanzando
+
+Ahora que ya tiene tu proyecto preparado, expande tu conocimiento utilizando las documentaciones de estas tecnologías:
+
+- Vite Documentation: https://vitejs.dev/
+
+- Vue 3 Documentation: https://vuejs.org/guide/introduction
+
+- Tailwind CSS Documentation: https://tailwindcss.com/docs/guides/vite
+
+
+
+
+
+
+
+
+
