@@ -1,7 +1,9 @@
 {
   "site": {
     "name": "Acadeller",
-    "title": "Acadeller: Aprende programación y comienza tu carrera tecnológica",
+    "site_name": "Acadeller",
+    "sitename": "Acadeller",
+    "title": "Acadeller: Aprende programación y enciende tu carrera",
     "base_url": "https://acadeller.com",
     "base_path": "/",
     "trailing_slash": false,
