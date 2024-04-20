@@ -3,6 +3,7 @@
     "name": "Acadeller",
     "site_name": "Acadeller",
     "sitename": "Acadeller",
+    "alternateName": ["acadeller"],
     "title": "Acadeller: Aprende programación y enciende tu carrera",
     "base_url": "https://acadeller.com",
     "base_path": "/",
