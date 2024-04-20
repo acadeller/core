@@ -97,6 +97,30 @@ Para contribuciones más complejas, cambios grandes o nuevas funciones, debes tr
 
 Los cambios serán revisados y si son correctos, serán fusionados en la rama principal (main).
 
+### Añadir entradas al blog
+
+Cualquier persona está invitada a crear publicaciones en el blog. Si quieres añadir una entrada al blog, es muy sencillo:
+1. Creamos un archivo `.mdx` en `.src/content/blog/`
+
+2. En la parte superior del archivo tenemos que rellenar está información:
+```mdx
+---
+title: ""
+meta_title: ""
+description: ""
+date: Date
+image: "/images/..."
+categories: [""]
+author: ""
+tags: [""]
+draft: Boolean
+---
+```
+Puedes usar otras entradas para tener un ejemplo.
+
+3. Añadimos nuestro artículo utilizando Markdown
+
+
 ## Contribuidores 🏆
 
 * [César Álvarez Llaneza](https://github.com/cesaralvrz): Fundador de Acadeller.
