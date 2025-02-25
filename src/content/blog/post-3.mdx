@@ -1,0 +1,233 @@
+---
+title: "Guía completa para crear tests unitarios en JavaScript con Vitest"
+meta_title: "Guía completa para crear tests unitarios en JavaScript con Vitest"
+description: "Te guiaremos paso a paso para crear tests unitarios en JavaScript con Vitest."
+date: 2025-02-23T05:00:00Z
+image: "/images/vitest.png"
+categories: ["Frontend"]
+author: "César Álvarez Llaneza"
+tags: ["testing", "unit testing", "vitest", "javascript"]
+draft: false
+---
+
+# Guía Completa de Testing en JavaScript con Vitest
+
+Los tests unitarios son una parte fundamental del desarrollo de software moderno. En este artículo, exploraremos cómo implementar tests unitarios efectivos usando Vitest, una moderna herramienta de testing que está ganando popularidad especialmente en el ecosistema de Vue y Vite.
+
+## ¿Qué son los Tests Unitarios?
+
+Los tests unitarios son pruebas automatizadas que verifican que partes individuales de tu código (unidades) funcionan correctamente. Son la primera línea de defensa contra bugs y juegan un papel crucial en el mantenimiento de código a largo plazo.
+
+## Estructura Básica de un Test
+
+En Vitest, los tests se organizan usando una estructura clara y legible. Los bloques principales son:
+
+- `describe`: Agrupa tests relacionados
+- `it`: Define un caso de prueba específico
+- `expect`: Verifica que los resultados son los esperados
+
+```javascript
+import { describe, it, expect } from 'vitest'
+
+describe('Calculator', () => {
+  it('suma dos números correctamente', () => {
+    expect(2 + 2).toBe(4)
+  })
+})
+```
+
+## Matchers: Las Herramientas de Verificación
+
+Los matchers son funciones que nos permiten verificar valores de diferentes formas. Son como los "verificadores" de nuestros tests. Aquí algunos de los más comunes:
+
+```javascript
+// Comparaciones básicas
+expect(value).toBe(4)        // Igualdad exacta (como ===)
+expect(value).toEqual({})    // Compara contenido completo
+expect(value).toBeTruthy()   // Verifica si es verdadero
+expect(array).toContain(2)   // Busca en arrays/strings
+
+// Arrays y objetos
+expect(user).toHaveProperty('name') // Verifica propiedades
+```
+
+## Mocks y Spies: Simulando Comportamientos
+
+### Mocks
+Los mocks son reemplazos simulados de funciones o módulos. Son especialmente útiles cuando necesitas:
+- Simular APIs o servicios externos
+- Controlar comportamientos complejos
+- Evitar efectos secundarios en tests
+
+```javascript
+import { vi } from 'vitest'
+
+describe('UserService', () => {
+  it('llama a la API correctamente', () => {
+    const fetchMock = vi.fn().mockResolvedValue({ data: 'success' })
+    vi.stubGlobal('fetch', fetchMock)
+
+    await getUserData(1)
+    expect(fetchMock).toHaveBeenCalledWith('/api/users/1')
+  })
+})
+```
+
+### Spies
+Los spies son observadores que registran las llamadas a funciones sin modificar su comportamiento original. Te permiten verificar:
+- Si una función fue llamada
+- Con qué argumentos
+- Cuántas veces
+
+```javascript
+const calculator = {
+  add: (a, b) => a + b
+}
+
+test('espía método add', () => {
+  const spy = vi.spyOn(calculator, 'add')
+
+  calculator.add(2, 3)
+
+  expect(spy).toHaveBeenCalledWith(2, 3)
+  expect(spy).toHaveBeenCalledTimes(1)
+})
+```
+
+## Setup y Teardown: Preparando el Entorno
+
+Para mantener nuestros tests limpios y evitar duplicación de código, Vitest proporciona funciones de setup y teardown:
+
+```javascript
+describe('Database Tests', () => {
+  beforeEach(() => {
+    // Inicializar estado fresco
+  })
+
+  afterEach(() => {
+    // Limpiar después de cada test
+  })
+
+  it('guarda datos correctamente', () => {
+    // Test aquí
+  })
+})
+```
+
+## Un Ejemplo Real: Shopping Cart
+
+Veamos cómo aplicar estos conceptos en un ejemplo real de un carrito de compras:
+
+```javascript
+// shoppingCart.js
+export class ShoppingCart {
+  constructor() {
+    this.items = new Map()
+  }
+
+  addItem(product, quantity = 1) {
+    const currentQuantity = this.items.get(product.id) || 0
+    this.items.set(product.id, currentQuantity + quantity)
+  }
+
+  removeItem(productId) {
+    this.items.delete(productId)
+  }
+
+  updateQuantity(productId, quantity) {
+    if (quantity <= 0) {
+      this.removeItem(productId)
+      return
+    }
+    this.items.set(productId, quantity)
+  }
+
+  getTotal(products) {
+    let total = 0
+    for (const [productId, quantity] of this.items) {
+      const product = products.find(p => p.id === productId)
+      if (product) {
+        total += product.price * quantity
+      }
+    }
+    return total
+  }
+}
+```
+
+Y sus correspondientes tests:
+
+```javascript
+import { describe, it, expect, beforeEach } from 'vitest'
+import { ShoppingCart } from './shoppingCart'
+
+describe('ShoppingCart', () => {
+  let cart
+  let products
+
+  beforeEach(() => {
+    cart = new ShoppingCart()
+    products = [
+      { id: 1, name: 'Laptop', price: 999 },
+      { id: 2, name: 'Mouse', price: 25 },
+    ]
+  })
+
+  it('agrega productos correctamente', () => {
+    const laptop = products[0]
+    cart.addItem(laptop, 2)
+    expect(cart.items.get(laptop.id)).toBe(2)
+  })
+
+  it('actualiza la cantidad de productos', () => {
+    const mouse = products[1]
+    cart.addItem(mouse, 1)
+    cart.updateQuantity(mouse.id, 3)
+    expect(cart.items.get(mouse.id)).toBe(3)
+  })
+
+  it('elimina productos cuando la cantidad es 0', () => {
+    const laptop = products[0]
+    cart.addItem(laptop, 1)
+    cart.updateQuantity(laptop.id, 0)
+    expect(cart.items.has(laptop.id)).toBe(false)
+  })
+
+  it('calcula el total correctamente', () => {
+    cart.addItem(products[0], 2) // 2 * 999 = 1998
+    cart.addItem(products[1], 1) // 1 * 25 = 25
+
+    const total = cart.getTotal(products)
+    expect(total).toBe(2023)
+  })
+})
+```
+
+## Configuración de Vitest
+
+Para aprovechar al máximo Vitest, puedes configurarlo según tus necesidades:
+
+```javascript
+// vitest.config.js
+export default {
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    coverage: {
+      reporter: ['text', 'json', 'html'],
+    },
+    setupFiles: ['./setup.js']
+  }
+}
+```
+
+## Conclusión
+
+Los tests unitarios son una inversión en la calidad y mantenibilidad de tu código. Con Vitest, tienes acceso a una herramienta moderna y potente que hace que escribir tests sea más sencillo y eficiente.
+
+## Recursos Adicionales
+- [Documentación oficial de Vitest](https://vitest.dev)
+- [Repositorio de GitHub](https://github.com/vitest-dev/vitest)
+- Comunidad de Vitest en Discord
+
+No dudes en empezar a implementar tests en tus proyectos. La curva de aprendizaje inicial se compensa rápidamente con la confianza y estabilidad que los tests aportan a tu código.
