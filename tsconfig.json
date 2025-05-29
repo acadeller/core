@@ -6,6 +6,8 @@
     "allowJs": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "allowImportingTsExtensions": true,
     "noEmit": true,
     "jsx": "preserve",
     "isolatedModules": true,

@@ -1,19 +1,21 @@
-@import "fonts";
+@use "fonts";
+@use "base";
+@use "components";
+@use "navigation";
+@use "utilities";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-  @import "fonts";
-  @import "base";
+  // Base styles will be automatically included from the @use "base" above
 }
 
 @layer components {
-  @import "components";
-  @import "navigation";
-  @import "buttons";
+  // Component styles will be automatically included from the @use "components" above
 }
 
 @layer utilities {
-  @import "utilities";
+  // Utility styles will be automatically included from the @use "utilities" above
 }

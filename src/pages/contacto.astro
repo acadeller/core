@@ -1,7 +1,13 @@
 ---
 import config from "@/config/config.json";
 import Base from "@/layouts/Base.astro";
+// Change from:
 import PageHeader from "@/partials/PageHeader.astro";
+
+// To:
+import PageHeader from "@/layouts/partials/PageHeader.astro";
+// OR
+import PageHeader from "../layouts/partials/PageHeader.astro";
 import { getEntry } from "astro:content";
 
 const contact = await getEntry("contact", "-index");
