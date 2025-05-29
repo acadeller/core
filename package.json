@@ -20,6 +20,7 @@
     "@astrojs/tailwind": "^5.0.2",
     "@astrojs/vue": "^4.0.6",
     "astro": "^4.0.8",
+    "astro-auto-import": "^0.4.4",
     "date-fns": "^2.30.0",
     "date-fns-tz": "^2.0.0",
     "disqus-react": "^1.1.5",
