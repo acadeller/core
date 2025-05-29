@@ -83,8 +83,8 @@ module.exports = {
         h6: h6 + "rem",
       },
       fontFamily: {
-        primary: ["'Poppins'", "'Roboto'", "'Helvetica Neue'", "Arial", "sans-serif"],
-        secondary: ["'Poppins'", "'Roboto'", "'Helvetica Neue'", "Arial", "sans-serif"],
+        primary: ["'Poppins'", "'Inter'", "'Segoe UI'", "'Roboto'", "'Helvetica Neue'", "Arial", "sans-serif"],
+        secondary: ["'Poppins'", "'Inter'", "'Segoe UI'", "'Roboto'", "'Helvetica Neue'", "Arial", "sans-serif"],
       },
     },
   },

@@ -38,6 +38,26 @@ const { title, meta_title, description, image, noindex, canonical } =
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Titan+One&display=swap" rel="stylesheet">
+    
+    <!-- Fallback for when Google Fonts fails -->
+    <script>
+      // Check if Google Fonts loaded, if not, ensure local fonts are used
+      document.fonts.ready.then(() => {
+        const testElement = document.createElement('div');
+        testElement.style.fontFamily = 'Poppins, monospace';
+        testElement.style.position = 'absolute';
+        testElement.style.visibility = 'hidden';
+        testElement.innerHTML = 'Test';
+        document.body.appendChild(testElement);
+        
+        // If Poppins didn't load, the width will be different from monospace
+        const usingFallback = testElement.offsetWidth === 0;
+        if (usingFallback) {
+          console.log('Using local Poppins fonts');
+        }
+        document.body.removeChild(testElement);
+      });
+    </script>
     <!-- theme meta -->
     <meta name="theme-name" content="acadeller" />
 

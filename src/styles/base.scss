@@ -6,7 +6,7 @@ html {
 
 body {
   @apply bg-body font-primary font-normal leading-relaxed text-text dark:bg-darkmode-body dark:text-darkmode-text;
-  /* Remove this line since font-primary will handle it */
+  /* Remove this line since font-primary handles it */
   /* font-family: 'Poppins', 'Roboto', 'Helvetica Neue', sans-serif; */
 }
 
