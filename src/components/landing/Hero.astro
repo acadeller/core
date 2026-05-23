@@ -1,0 +1,94 @@
+---
+// Hero.astro - Hero section with headline, CTAs, and marquee
+import { content, type Lang } from "@/config/landing";
+
+const defaultLang: Lang = 'en';
+const t = content[defaultLang];
+
+// Duplicate marquee items for seamless loop
+const marqueeRow = [...t.marquee, ...t.marquee, ...t.marquee];
+---
+
+<header class="landing-hero" id="top">
+  <span class="hero-eyebrow" data-i18n="eyebrow">{t.eyebrow}</span>
+  <h1>
+    <span data-i18n="heroLead">{t.heroLead}</span><br/>
+    <span class="accent" data-i18n="heroAccent">{t.heroAccent}</span>
+    <span class="annot a-headline">
+      <svg width="58" height="28" viewBox="0 0 58 28" fill="none" style="overflow: visible;">
+        <path d="M 54 14 Q 38 4, 22 14 T 4 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+        <path d="M 12 6 L 4 12 L 11 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>
+      <span data-i18n="annotHeadline">headline</span>
+    </span>
+  </h1>
+  <p class="hero-sub" data-i18n="heroSub">{t.heroSub}</p>
+  <div class="hero-cta">
+    <a class="landing-btn landing-btn-accent" href="#contact" data-i18n="ctaBtn">
+      <span class="btn-text">{t.cta}</span>
+      <svg class="landing-btn-arrow" viewBox="0 0 14 14" fill="none">
+        <path d="M3 7h8M7.5 3.5L11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+    <a class="landing-btn landing-btn-ghost" href="#work" data-i18n="seeWorkBtn">
+      <span class="btn-text">{t.seeWork}</span>
+    </a>
+  </div>
+
+  <div class="landing-marquee">
+    <div class="marquee-track" id="marquee-track">
+      {marqueeRow.map((m, i) => (
+        <span class="marquee-item">
+          <span class="star">✦</span> {m}
+        </span>
+      ))}
+    </div>
+  </div>
+</header>
+
+<script>
+  import { content, type Lang } from "@/config/landing";
+
+  function updateHeroText() {
+    const lang = (window.getCurrentLang?.() || 'en') as Lang;
+    const t = content[lang];
+
+    // Update text elements
+    const eyebrow = document.querySelector('[data-i18n="eyebrow"]');
+    if (eyebrow) eyebrow.textContent = t.eyebrow;
+
+    const heroLead = document.querySelector('[data-i18n="heroLead"]');
+    if (heroLead) heroLead.textContent = t.heroLead;
+
+    const heroAccent = document.querySelector('[data-i18n="heroAccent"]');
+    if (heroAccent) heroAccent.textContent = t.heroAccent;
+
+    const heroSub = document.querySelector('[data-i18n="heroSub"]');
+    if (heroSub) heroSub.textContent = t.heroSub;
+
+    const annotHeadline = document.querySelector('[data-i18n="annotHeadline"]');
+    if (annotHeadline) annotHeadline.textContent = lang === 'en' ? 'headline' : 'titular';
+
+    const ctaBtn = document.querySelector('[data-i18n="ctaBtn"] .btn-text');
+    if (ctaBtn) ctaBtn.textContent = t.cta;
+
+    const seeWorkBtn = document.querySelector('[data-i18n="seeWorkBtn"] .btn-text');
+    if (seeWorkBtn) seeWorkBtn.textContent = t.seeWork;
+
+    // Update marquee
+    const marqueeTrack = document.getElementById('marquee-track');
+    if (marqueeTrack) {
+      const marqueeRow = [...t.marquee, ...t.marquee, ...t.marquee];
+      marqueeTrack.innerHTML = marqueeRow.map(m =>
+        `<span class="marquee-item"><span class="star">✦</span> ${m}</span>`
+      ).join('');
+    }
+  }
+
+  // Update on language change
+  window.addEventListener('langchange', updateHeroText);
+
+  // Initial update
+  document.addEventListener('DOMContentLoaded', updateHeroText);
+  document.addEventListener('astro:page-load', updateHeroText);
+</script>

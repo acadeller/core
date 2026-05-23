@@ -1,39 +1,34 @@
 ---
 import config from "@/config/config.json";
-import Base from "@/layouts/Base.astro";
+import BlogBase from "@/layouts/BlogBase.astro";
 import { getAllTaxonomy, getTaxonomy } from "@/lib/taxonomyParser.astro";
 import { humanize } from "@/lib/utils/textConverter";
-import PageHeader from "@/partials/PageHeader.astro";
+import BlogPageHeader from "@/partials/BlogPageHeader.astro";
 
 const { blog_folder }: { blog_folder: string } = config.settings;
 const categories = await getTaxonomy(blog_folder, "categories");
 const allCategories = await getAllTaxonomy(blog_folder, "categories");
 ---
 
-<Base title={"Categories"}>
-  <PageHeader title={"Categories"} />
-  <section class="section">
-    <div class="container text-center">
-      <ul>
-        {
-          categories.map((category: string) => {
-            const count = allCategories.filter((c) => c === category).length;
-            return (
-              <li class="m-3 inline-block">
-                <a
-                  href={`/categories/${category}`}
-                  class="block rounded bg-theme-light px-4 py-2 text-xl text-gray-900 dark:bg-gray-900 dark:text-darkmode-dark"
-                >
-                  {humanize(category)}{" "}
-                  <span class="ml-2 rounded bg-body px-2 dark:bg-darkmode-body">
-                    {count}
-                  </span>
-                </a>
-              </li>
-            );
-          })
-        }
-      </ul>
+<BlogBase title="Categorías">
+  <BlogPageHeader title="Categorías" />
+  <div class="blog-container">
+    <div class="tags-list" style="justify-content: center; gap: 12px;">
+      {
+        categories.map((category: string) => {
+          const count = allCategories.filter((c) => c === category).length;
+          return (
+            <a
+              href={`/categories/${category}`}
+              class="tag-item"
+              style="padding: 12px 20px; font-size: 16px;"
+            >
+              {humanize(category)}
+              <span style="margin-left: 8px; opacity: 0.6;">({count})</span>
+            </a>
+          );
+        })
+      }
     </div>
-  </section>
-</Base>
+  </div>
+</BlogBase>

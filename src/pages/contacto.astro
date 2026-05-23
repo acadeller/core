@@ -1,75 +1,290 @@
 ---
-import config from "@/config/config.json";
-import Base from "@/layouts/Base.astro";
-// Change from:
-import PageHeader from "@/partials/PageHeader.astro";
+// Contacto page with new landing design
+import LandingBase from "@/layouts/LandingBase.astro";
+import { content, type Lang, SOCIALS } from "@/config/landing";
 
-// To:
-import PageHeader from "@/layouts/partials/PageHeader.astro";
-// OR
-import PageHeader from "../layouts/partials/PageHeader.astro";
-import { getEntry } from "astro:content";
-
-const contact = await getEntry("contact", "-index");
-const { contact_form_action }: { contact_form_action: string } = config.params;
-const { title, description, meta_title, image } = contact.data;
+const defaultLang: Lang = 'es';
+const t = content[defaultLang];
 ---
 
-<Base
-  title={title}
-  meta_title={meta_title}
-  description={description}
-  image={image}
+<LandingBase
+  title="Contacto · Acadeller"
+  description="Contacta con nosotros para hablar de tu próximo proyecto. Respondemos en un día laborable."
 >
-  <PageHeader title={title} />
-  <section class="section-sm">
-    <div class="container">
-      <div class="row">
-        <div class="mx-auto md:col-10 lg:col-6">
+  <!-- Contact Header -->
+  <section class="contact-header">
+    <div class="landing-container">
+      <div class="contact-header-inner">
+        <div class="contact-eyebrow">
+          <span class="bar"></span>
+          <span data-i18n="ctaEyebrow">{t.ctaEyebrow}</span>
+        </div>
+        <h1>
+          <span data-i18n="ctaH0">{t.ctaH[0]}</span><span class="accent" data-i18n="ctaH1">{t.ctaH[1]}</span>
+        </h1>
+        <p class="contact-sub" data-i18n="ctaSub">{t.ctaSub}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Content -->
+  <section class="contact-content">
+    <div class="landing-container">
+      <div class="contact-grid">
+        <!-- Contact Form -->
+        <div class="contact-form-wrap">
           <form
             action="https://formspree.io/f/xrgnbzbz"
             method="POST"
+            class="contact-form"
           >
-            <div class="mb-6">
-              <label for="name" class="form-label">
-                Nombre completo <span class="text-red-500">*</span>
-              </label>
-              <input
-                id="name"
-                name="name"
-                class="form-input"
-                placeholder="Introduce tu nombre..."
-                type="text"
-              />
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name" class="form-label">
+                  <span data-i18n-label="name">Nombre</span>
+                  <span class="required">*</span>
+                </label>
+                <input
+                  id="name"
+                  name="name"
+                  class="form-input"
+                  placeholder="Tu nombre..."
+                  type="text"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="company" class="form-label">
+                  <span data-i18n-label="company">Empresa</span>
+                </label>
+                <input
+                  id="company"
+                  name="company"
+                  class="form-input"
+                  placeholder="Tu empresa..."
+                  type="text"
+                />
+              </div>
             </div>
-            <div class="mb-6">
+            <div class="form-group">
               <label for="email" class="form-label">
-                Email <span class="text-red-500">*</span>
+                <span data-i18n-label="email">Email</span>
+                <span class="required">*</span>
               </label>
               <input
                 id="email"
                 name="email"
                 class="form-input"
-                placeholder="Introduce tu email..."
+                placeholder="tu@email.com"
                 type="email"
+                required
               />
             </div>
-            <div class="mb-6">
+            <div class="form-group">
+              <label for="project" class="form-label">
+                <span data-i18n-label="project">Tipo de proyecto</span>
+              </label>
+              <select id="project" name="project" class="form-input">
+                <option value="" data-i18n-option="select">Selecciona una opción</option>
+                <option value="web" data-i18n-option="web">Plataforma Web</option>
+                <option value="mobile" data-i18n-option="mobile">App Móvil</option>
+                <option value="ai" data-i18n-option="ai">IA & Automatización</option>
+                <option value="design" data-i18n-option="design">Diseño de Producto</option>
+                <option value="consulting" data-i18n-option="consulting">Consultoría</option>
+                <option value="other" data-i18n-option="other">Otro</option>
+              </select>
+            </div>
+            <div class="form-group">
               <label for="message" class="form-label">
-                Mensaje <span class="text-red-500">*</span>
+                <span data-i18n-label="message">Cuéntanos tu proyecto</span>
+                <span class="required">*</span>
               </label>
               <textarea
                 id="message"
                 name="message"
                 class="form-input"
-                placeholder="Escribe tu mensaje..."
-                rows="8"></textarea>
+                placeholder="Describe brevemente tu proyecto, objetivos y plazos..."
+                rows="6"
+                required></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Enviar</button>
+            <button type="submit" class="landing-btn landing-btn-accent">
+              <span data-i18n-btn="send">Enviar mensaje</span>
+              <svg class="landing-btn-arrow" viewBox="0 0 14 14" fill="none">
+                <path d="M3 7h8M7.5 3.5L11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
             <input type="hidden" name="_next" value="/thank-you" />
           </form>
         </div>
+
+        <!-- Contact Info Sidebar -->
+        <aside class="contact-sidebar">
+          <div class="contact-card">
+            <div class="contact-card-header">
+              <span class="mono muted" data-i18n-sidebar="direct">Contacto directo</span>
+            </div>
+            <a class="contact-mail" href={`mailto:${t.ctaMail}`}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                <path d="M22 6L12 13 2 6"/>
+              </svg>
+              <span data-i18n="ctaMail">{t.ctaMail}</span>
+            </a>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-card-header">
+              <span class="mono muted" data-i18n-sidebar="social">{t.footSocial}</span>
+            </div>
+            <div class="contact-socials">
+              {SOCIALS.map(([name, url]) => (
+                <a href={url} target="_blank" rel="noopener noreferrer" class="social-link">
+                  {name}
+                  <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
+                    <path d="M4 10L10 4M10 4H5M10 4v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div class="contact-card availability">
+            <div class="availability-dot"></div>
+            <div class="availability-text">
+              <span class="mono" data-i18n-avail="status">Disponible</span>
+              <span class="avail-detail" data-i18n-avail="detail">Q3 2026</span>
+            </div>
+          </div>
+        </aside>
       </div>
     </div>
   </section>
-</Base>
+</LandingBase>
+
+<script>
+  import { content, type Lang } from "@/config/landing";
+
+  function updateContactText() {
+    const lang = (window.getCurrentLang?.() || 'es') as Lang;
+    const t = content[lang];
+
+    // Header
+    const ctaEyebrow = document.querySelector('[data-i18n="ctaEyebrow"]');
+    if (ctaEyebrow) ctaEyebrow.textContent = t.ctaEyebrow;
+
+    const ctaH0 = document.querySelector('[data-i18n="ctaH0"]');
+    if (ctaH0) ctaH0.textContent = t.ctaH[0];
+
+    const ctaH1 = document.querySelector('[data-i18n="ctaH1"]');
+    if (ctaH1) ctaH1.textContent = t.ctaH[1];
+
+    const ctaSub = document.querySelector('[data-i18n="ctaSub"]');
+    if (ctaSub) ctaSub.textContent = t.ctaSub;
+
+    const ctaMail = document.querySelector('[data-i18n="ctaMail"]');
+    if (ctaMail) ctaMail.textContent = t.ctaMail;
+
+    // Sidebar
+    const footSocial = document.querySelector('[data-i18n-sidebar="social"]');
+    if (footSocial) footSocial.textContent = t.footSocial;
+
+    // Form labels based on language
+    const labels = {
+      en: {
+        name: 'Name',
+        company: 'Company',
+        email: 'Email',
+        project: 'Project type',
+        message: 'Tell us about your project',
+        send: 'Send message',
+        direct: 'Direct contact',
+        select: 'Select an option',
+        web: 'Web Platform',
+        mobile: 'Mobile App',
+        ai: 'AI & Automation',
+        design: 'Product Design',
+        consulting: 'Consulting',
+        other: 'Other',
+        status: 'Available',
+        detail: 'Q3 2026'
+      },
+      es: {
+        name: 'Nombre',
+        company: 'Empresa',
+        email: 'Email',
+        project: 'Tipo de proyecto',
+        message: 'Cuéntanos tu proyecto',
+        send: 'Enviar mensaje',
+        direct: 'Contacto directo',
+        select: 'Selecciona una opción',
+        web: 'Plataforma Web',
+        mobile: 'App Móvil',
+        ai: 'IA & Automatización',
+        design: 'Diseño de Producto',
+        consulting: 'Consultoría',
+        other: 'Otro',
+        status: 'Disponible',
+        detail: 'Q3 2026'
+      }
+    };
+
+    const l = labels[lang];
+
+    // Update form labels
+    const labelName = document.querySelector('[data-i18n-label="name"]');
+    if (labelName) labelName.textContent = l.name;
+
+    const labelCompany = document.querySelector('[data-i18n-label="company"]');
+    if (labelCompany) labelCompany.textContent = l.company;
+
+    const labelEmail = document.querySelector('[data-i18n-label="email"]');
+    if (labelEmail) labelEmail.textContent = l.email;
+
+    const labelProject = document.querySelector('[data-i18n-label="project"]');
+    if (labelProject) labelProject.textContent = l.project;
+
+    const labelMessage = document.querySelector('[data-i18n-label="message"]');
+    if (labelMessage) labelMessage.textContent = l.message;
+
+    const btnSend = document.querySelector('[data-i18n-btn="send"]');
+    if (btnSend) btnSend.textContent = l.send;
+
+    const sidebarDirect = document.querySelector('[data-i18n-sidebar="direct"]');
+    if (sidebarDirect) sidebarDirect.textContent = l.direct;
+
+    // Update select options
+    const options = document.querySelectorAll('[data-i18n-option]');
+    options.forEach(opt => {
+      const key = opt.getAttribute('data-i18n-option');
+      if (key && l[key as keyof typeof l]) {
+        opt.textContent = l[key as keyof typeof l];
+      }
+    });
+
+    // Availability
+    const availStatus = document.querySelector('[data-i18n-avail="status"]');
+    if (availStatus) availStatus.textContent = l.status;
+
+    const availDetail = document.querySelector('[data-i18n-avail="detail"]');
+    if (availDetail) availDetail.textContent = l.detail;
+
+    // Update placeholders
+    const nameInput = document.getElementById('name') as HTMLInputElement;
+    if (nameInput) nameInput.placeholder = lang === 'en' ? 'Your name...' : 'Tu nombre...';
+
+    const companyInput = document.getElementById('company') as HTMLInputElement;
+    if (companyInput) companyInput.placeholder = lang === 'en' ? 'Your company...' : 'Tu empresa...';
+
+    const emailInput = document.getElementById('email') as HTMLInputElement;
+    if (emailInput) emailInput.placeholder = lang === 'en' ? 'you@email.com' : 'tu@email.com';
+
+    const messageInput = document.getElementById('message') as HTMLTextAreaElement;
+    if (messageInput) messageInput.placeholder = lang === 'en'
+      ? 'Briefly describe your project, goals, and timeline...'
+      : 'Describe brevemente tu proyecto, objetivos y plazos...';
+  }
+
+  window.addEventListener('langchange', updateContactText);
+  document.addEventListener('DOMContentLoaded', updateContactText);
+  document.addEventListener('astro:page-load', updateContactText);
+</script>

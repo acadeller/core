@@ -1,0 +1,69 @@
+---
+// LanguageSwitcher.astro - EN/ES language toggle
+---
+
+<div class="lang-switch" id="lang-switcher">
+  <button data-lang="en" aria-label="English">EN</button>
+  <button data-lang="es" aria-label="Spanish">ES</button>
+</div>
+
+<script is:inline>
+(function() {
+  const STORAGE_KEY = 'acadeller.lang';
+  const DEFAULT_LANG = 'en';
+
+  function getStoredLang() {
+    if (typeof localStorage !== 'undefined') {
+      return localStorage.getItem(STORAGE_KEY) || DEFAULT_LANG;
+    }
+    return DEFAULT_LANG;
+  }
+
+  function setLang(lang) {
+    document.documentElement.setAttribute('data-lang', lang);
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem(STORAGE_KEY, lang);
+    }
+    updateButtons(lang);
+    // Dispatch event for components to react to language change
+    window.dispatchEvent(new CustomEvent('langchange', { detail: { lang } }));
+  }
+
+  function updateButtons(lang) {
+    const switcher = document.getElementById('lang-switcher');
+    if (!switcher) return;
+
+    switcher.querySelectorAll('button').forEach(btn => {
+      btn.classList.toggle('on', btn.dataset.lang === lang);
+    });
+  }
+
+  function init() {
+    const lang = getStoredLang();
+    setLang(lang);
+
+    const switcher = document.getElementById('lang-switcher');
+    if (switcher) {
+      switcher.addEventListener('click', (e) => {
+        const btn = e.target.closest('button');
+        if (btn && btn.dataset.lang) {
+          setLang(btn.dataset.lang);
+        }
+      });
+    }
+  }
+
+  // Expose getCurrentLang globally
+  window.getCurrentLang = getStoredLang;
+
+  // Initialize on load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+  // Re-initialize on Astro page transitions
+  document.addEventListener('astro:page-load', init);
+})();
+</script>

@@ -1,27 +1,131 @@
 ---
-import AuthorCard from "@/components/AuthorCard.astro";
-import Base from "@/layouts/Base.astro";
+// Authors index page with landing design system
+import AuthorCard from "@/layouts/components/AuthorCard.astro";
+import BlogBase from "@/layouts/BlogBase.astro";
 import { getSinglePage } from "@/lib/contentParser.astro";
-import PageHeader from "@/partials/PageHeader.astro";
 import { getEntry } from "astro:content";
+import { content, type Lang } from "@/config/landing";
 
 const authorIndex = await getEntry<any, string>("autores", "-index");
 const authors = await getSinglePage("autores");
+const t = content.en; // Default to English for SSR
 ---
 
-<Base title={authorIndex.data.title}>
-  <PageHeader title={authorIndex.data.title} />
-  <section class="section-sm pb-0">
-    <div class="container">
-      <div class="row justify-center">
-        {
-          authors.map((author) => (
-            <div class="mb-14 md:col-6 lg:col-4">
-              <AuthorCard data={author} />
-            </div>
-          ))
-        }
-      </div>
+<BlogBase title={authorIndex.data.title}>
+  <!-- Page Header -->
+  <header class="authors-header">
+    <div class="authors-header-inner">
+      <nav class="breadcrumb">
+        <a href="/" data-i18n="authorsBreadcrumbHome">{t.blog.home}</a>
+        <span>/</span>
+        <span data-i18n="authorsBreadcrumbAuthors">{t.blog.authors}</span>
+      </nav>
+      <h1>{authorIndex.data.title}</h1>
+    </div>
+  </header>
+
+  <!-- Authors Grid -->
+  <section class="authors-section">
+    <div class="authors-grid">
+      {
+        authors.map((author) => (
+          <AuthorCard data={author} />
+        ))
+      }
     </div>
   </section>
-</Base>
+</BlogBase>
+
+<style>
+  .authors-header {
+    padding: 100px 56px 60px;
+    text-align: center;
+    border-bottom: 1px solid var(--line);
+  }
+
+  @media (max-width: 900px) {
+    .authors-header {
+      padding: 60px 24px 40px;
+    }
+  }
+
+  .authors-header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  .breadcrumb a {
+    color: var(--ink-3);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .breadcrumb a:hover {
+    color: var(--ink);
+  }
+
+  .authors-header h1 {
+    font-size: clamp(48px, 6vw, 80px);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    font-weight: 800;
+    margin: 0;
+    color: var(--ink);
+  }
+
+  .authors-section {
+    padding: 60px 56px 120px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 900px) {
+    .authors-section {
+      padding: 40px 24px 80px;
+    }
+  }
+
+  .authors-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  @media (max-width: 768px) {
+    .authors-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  import { content, type Lang } from '@/config/landing';
+
+  function updateAuthorsPageText() {
+    const lang = ((window as any).getCurrentLang?.() || 'en') as Lang;
+    const t = content[lang];
+
+    const homeLink = document.querySelector('[data-i18n="authorsBreadcrumbHome"]');
+    if (homeLink) homeLink.textContent = t.blog.home;
+
+    const authorsSpan = document.querySelector('[data-i18n="authorsBreadcrumbAuthors"]');
+    if (authorsSpan) authorsSpan.textContent = t.blog.authors;
+  }
+
+  window.addEventListener('langchange', updateAuthorsPageText);
+  document.addEventListener('DOMContentLoaded', updateAuthorsPageText);
+  document.addEventListener('astro:page-load', updateAuthorsPageText);
+</script>

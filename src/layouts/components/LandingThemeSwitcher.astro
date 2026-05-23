@@ -1,0 +1,71 @@
+---
+// LandingThemeSwitcher.astro - 3-theme toggle (paper/ink/bw)
+---
+
+<div class="theme-switch" id="theme-switcher">
+  <button data-t="paper" title="Light" aria-label="Light theme">
+    <span class="dot"></span>
+  </button>
+  <button data-t="ink" title="Dark" aria-label="Dark theme">
+    <span class="dot"></span>
+  </button>
+  <button data-t="bw" title="B&W" aria-label="Black and white theme">
+    <span class="dot"></span>
+  </button>
+</div>
+
+<script is:inline>
+(function() {
+  const STORAGE_KEY = 'acadeller.theme';
+  const DEFAULT_THEME = 'paper';
+
+  function getStoredTheme() {
+    if (typeof localStorage !== 'undefined') {
+      return localStorage.getItem(STORAGE_KEY) || DEFAULT_THEME;
+    }
+    return DEFAULT_THEME;
+  }
+
+  function setTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem(STORAGE_KEY, theme);
+    }
+    updateButtons(theme);
+  }
+
+  function updateButtons(theme) {
+    const switcher = document.getElementById('theme-switcher');
+    if (!switcher) return;
+
+    switcher.querySelectorAll('button').forEach(btn => {
+      btn.classList.toggle('on', btn.dataset.t === theme);
+    });
+  }
+
+  function init() {
+    const theme = getStoredTheme();
+    setTheme(theme);
+
+    const switcher = document.getElementById('theme-switcher');
+    if (switcher) {
+      switcher.addEventListener('click', (e) => {
+        const btn = e.target.closest('button');
+        if (btn && btn.dataset.t) {
+          setTheme(btn.dataset.t);
+        }
+      });
+    }
+  }
+
+  // Initialize on load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+  // Re-initialize on Astro page transitions
+  document.addEventListener('astro:page-load', init);
+})();
+</script>

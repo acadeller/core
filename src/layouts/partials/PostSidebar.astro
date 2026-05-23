@@ -1,15 +1,18 @@
 ---
+// PostSidebar.astro - Blog sidebar with i18n support
 import { humanize } from "@/lib/utils/textConverter";
+import { content, type Lang } from "@/config/landing";
 
 const { tags, categories, allCategories } = Astro.props;
+const t = content.en; // Default to English for SSR
 ---
 
-<div class="lg:col-4">
-  <!-- categories -->
-  <div class="mb-8">
-    <h5 class="mb-6">Categorías</h5>
-    <div class="rounded bg-theme-light p-8 dark:bg-gray-900">
-      <ul class="space-y-4">
+<aside class="blog-sidebar">
+  <!-- Categories -->
+  <div class="sidebar-section">
+    <h4 data-i18n="sidebarCategories">{t.blog.categories}</h4>
+    <div class="sidebar-box">
+      <ul>
         {
           categories.map((category: any) => {
             const count = allCategories.filter(
@@ -17,11 +20,9 @@ const { tags, categories, allCategories } = Astro.props;
             ).length;
             return (
               <li>
-                <a
-                  class="flex justify-between hover:text-primary dark:hover:text-darkmode-primary"
-                  href={`/categories/${category}`}
-                >
-                  {humanize(category)} <span>({count})</span>
+                <a href={`/categories/${category}`}>
+                  {humanize(category)}
+                  <span>({count})</span>
                 </a>
               </li>
             );
@@ -30,26 +31,39 @@ const { tags, categories, allCategories } = Astro.props;
       </ul>
     </div>
   </div>
-  <!-- tags -->
-  <div class="mb-8">
-    <h5 class="mb-6">Tags</h5>
-    <div class="rounded bg-theme-light p-6 dark:bg-gray-900">
-      <ul>
+
+  <!-- Tags -->
+  <div class="sidebar-section">
+    <h4 data-i18n="sidebarTags">{t.blog.tags}</h4>
+    <div class="sidebar-box">
+      <div class="tags-list">
         {
-          tags.map((tag: any) => {
-            return (
-              <li class="inline-block">
-                <a
-                  class="m-1 block rounded bg-white px-3 py-1 hover:bg-primary hover:text-white dark:bg-darkmode-body dark:hover:bg-darkmode-primary dark:hover:text-gray-900"
-                  href={`/tags/${tag}`}
-                >
-                  {humanize(tag)}
-                </a>
-              </li>
-            );
-          })
+          tags.map((tag: any) => (
+            <a class="tag-item" href={`/tags/${tag}`}>
+              {humanize(tag)}
+            </a>
+          ))
         }
-      </ul>
+      </div>
     </div>
   </div>
-</div>
+</aside>
+
+<script>
+  import { content, type Lang } from '@/config/landing';
+
+  function updateSidebarText() {
+    const lang = ((window as any).getCurrentLang?.() || 'en') as Lang;
+    const t = content[lang];
+
+    const categoriesH4 = document.querySelector('[data-i18n="sidebarCategories"]');
+    if (categoriesH4) categoriesH4.textContent = t.blog.categories;
+
+    const tagsH4 = document.querySelector('[data-i18n="sidebarTags"]');
+    if (tagsH4) tagsH4.textContent = t.blog.tags;
+  }
+
+  window.addEventListener('langchange', updateSidebarText);
+  document.addEventListener('DOMContentLoaded', updateSidebarText);
+  document.addEventListener('astro:page-load', updateSidebarText);
+</script>

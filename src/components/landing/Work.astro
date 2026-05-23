@@ -1,0 +1,142 @@
+---
+// Work.astro - Portfolio section with project cards
+import { content, type Lang } from "@/config/landing";
+
+const defaultLang: Lang = 'en';
+const t = content[defaultLang];
+---
+
+<section class="landing-section" id="work">
+  <div class="section-head">
+    <span class="section-no"><span class="bar"></span><span data-i18n="workNo">{t.workNo}</span></span>
+    <h2 class="section-title">
+      <span data-i18n="workH0">{t.workH[0]}</span><span class="accent" data-i18n="workH1">{t.workH[1]}</span>
+    </h2>
+  </div>
+
+  <!-- Feectory Project -->
+  <article class="work-feature" id="work-feectory">
+    <div class="work-visual">
+      <img src="/images/feectory-preview.png" alt="Feectory - The growth factory for app developers" loading="lazy" />
+    </div>
+    <div class="work-meta">
+      <div class="work-tag-row">
+        <span class="work-tag featured" data-i18n="feectoryTag">{t.feectory.tag}</span>
+        <span class="work-tag outline" data-i18n="feectoryType">{t.feectory.type}</span>
+        <span class="work-tag year">{t.feectory.year}</span>
+      </div>
+      <h3 class="work-title">{t.feectory.title}</h3>
+      <p class="work-desc" data-i18n="feectoryDesc">{t.feectory.desc}</p>
+      <div class="work-kv" id="feectory-kv">
+        {t.feectory.kv.map(([k, v]) => (
+          <div>
+            <div class="k">{k}</div>
+            <div class="v">{v}</div>
+          </div>
+        ))}
+      </div>
+      <a class="work-link" href={t.feectory.linkUrl} target="_blank" rel="noopener">
+        <span data-i18n="feectoryLink">{t.feectory.link}</span>
+        <svg class="landing-btn-arrow" viewBox="0 0 14 14" fill="none">
+          <path d="M3 7h8M7.5 3.5L11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </article>
+
+  <!-- Nika Project -->
+  <article class="work-feature reverse" id="work-nika">
+    <div class="work-meta">
+      <div class="work-tag-row">
+        <span class="work-tag featured" data-i18n="nikaTag">{t.nika.tag}</span>
+        <span class="work-tag outline" data-i18n="nikaType">{t.nika.type}</span>
+        <span class="work-tag year">{t.nika.year}</span>
+      </div>
+      <h3 class="work-title">{t.nika.title}</h3>
+      <p class="work-desc" data-i18n="nikaDesc">{t.nika.desc}</p>
+      <div class="work-kv" id="nika-kv">
+        {t.nika.kv.map(([k, v]) => (
+          <div>
+            <div class="k">{k}</div>
+            <div class="v">{v}</div>
+          </div>
+        ))}
+      </div>
+      <a class="work-link" href={t.nika.linkUrl} target="_blank" rel="noopener">
+        <span data-i18n="nikaLink">{t.nika.link}</span>
+        <svg class="landing-btn-arrow" viewBox="0 0 14 14" fill="none">
+          <path d="M3 7h8M7.5 3.5L11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+    <div class="work-visual">
+      <img src="/images/nika-preview.png" alt="Nika TCG - One Piece Card Game Scanner" loading="lazy" />
+    </div>
+  </article>
+</section>
+
+<script>
+  import { content, type Lang } from "@/config/landing";
+
+  function updateWorkText() {
+    const lang = (window.getCurrentLang?.() || 'en') as Lang;
+    const t = content[lang];
+
+    // Update section header
+    const workNo = document.querySelector('[data-i18n="workNo"]');
+    if (workNo) workNo.textContent = t.workNo;
+
+    const workH0 = document.querySelector('[data-i18n="workH0"]');
+    if (workH0) workH0.textContent = t.workH[0];
+
+    const workH1 = document.querySelector('[data-i18n="workH1"]');
+    if (workH1) workH1.textContent = t.workH[1];
+
+    // Update Feectory
+    const feectoryTag = document.querySelector('[data-i18n="feectoryTag"]');
+    if (feectoryTag) feectoryTag.textContent = t.feectory.tag;
+
+    const feectoryType = document.querySelector('[data-i18n="feectoryType"]');
+    if (feectoryType) feectoryType.textContent = t.feectory.type;
+
+    const feectoryDesc = document.querySelector('[data-i18n="feectoryDesc"]');
+    if (feectoryDesc) feectoryDesc.textContent = t.feectory.desc;
+
+    const feectoryKv = document.getElementById('feectory-kv');
+    if (feectoryKv) {
+      feectoryKv.innerHTML = t.feectory.kv.map(([k, v]) => `
+        <div>
+          <div class="k">${k}</div>
+          <div class="v">${v}</div>
+        </div>
+      `).join('');
+    }
+
+    // Update Nika
+    const nikaTag = document.querySelector('[data-i18n="nikaTag"]');
+    if (nikaTag) nikaTag.textContent = t.nika.tag;
+
+    const nikaType = document.querySelector('[data-i18n="nikaType"]');
+    if (nikaType) nikaType.textContent = t.nika.type;
+
+    const nikaDesc = document.querySelector('[data-i18n="nikaDesc"]');
+    if (nikaDesc) nikaDesc.textContent = t.nika.desc;
+
+    const nikaKv = document.getElementById('nika-kv');
+    if (nikaKv) {
+      nikaKv.innerHTML = t.nika.kv.map(([k, v]) => `
+        <div>
+          <div class="k">${k}</div>
+          <div class="v">${v}</div>
+        </div>
+      `).join('');
+    }
+  }
+
+  // Update on language change
+  window.addEventListener('langchange', updateWorkText);
+
+  // Initial update
+  document.addEventListener('DOMContentLoaded', updateWorkText);
+  document.addEventListener('astro:page-load', updateWorkText);
+</script>

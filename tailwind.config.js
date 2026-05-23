@@ -85,6 +85,7 @@ module.exports = {
       fontFamily: {
         primary: ["'Poppins'", "'Inter'", "'Segoe UI'", "'Roboto'", "'Helvetica Neue'", "Arial", "sans-serif"],
         secondary: ["'Poppins'", "'Inter'", "'Segoe UI'", "'Roboto'", "'Helvetica Neue'", "Arial", "sans-serif"],
+        mono: ["'JetBrains Mono'", "ui-monospace", "SFMono-Regular", "monospace"],
       },
     },
   },
