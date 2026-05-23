@@ -1,0 +1,49 @@
+---
+// FeectoryMock.astro - Dashboard mockup illustration
+---
+
+<div class="mock-feectory">
+  <div class="topbar">
+    <span class="logo-dot"></span>
+    <span class="logo-text">feectory</span>
+    <div class="nav-mock">
+      <span>Dashboard</span>
+      <span>Invoices</span>
+      <span>Clients</span>
+      <span>Settings</span>
+    </div>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <div class="lbl">MRR</div>
+      <div class="num">€48.2k</div>
+      <div class="delta">↑ 12.4%</div>
+    </div>
+    <div class="stat">
+      <div class="lbl">Clients</div>
+      <div class="num">126</div>
+      <div class="delta">↑ 8</div>
+    </div>
+    <div class="stat">
+      <div class="lbl">Open</div>
+      <div class="num">€14.8k</div>
+      <div class="delta" style="color:#ffae3b">3 overdue</div>
+    </div>
+  </div>
+  <div class="chart">
+    <div class="chart-h">
+      <span>Revenue · last 30d</span>
+      <span style="color:#ffcc00">€142.6k</span>
+    </div>
+    <svg class="chart-svg" viewBox="0 0 130 70" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="cgrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#ffcc00" stop-opacity="0.5"/>
+          <stop offset="100%" stop-color="#ffcc00" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <polyline points="0,55 8,52 16,48 24,50 32,42 40,38 48,40 56,32 64,28 72,30 80,22 88,18 96,20 104,12 112,8 120,15 120,70 0,70" fill="url(#cgrad)"/>
+      <polyline points="0,55 8,52 16,48 24,50 32,42 40,38 48,40 56,32 64,28 72,30 80,22 88,18 96,20 104,12 112,8 120,15" fill="none" stroke="#ffcc00" stroke-width="1.5"/>
+    </svg>
+  </div>
+</div>

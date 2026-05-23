@@ -1,0 +1,13 @@
+---
+// BlogPageHeader.astro - Page header for blog pages
+const { title } = Astro.props;
+---
+
+<header class="blog-header">
+  <h1>{title}</h1>
+  <nav class="breadcrumb">
+    <a href="/">Inicio</a>
+    <span>/</span>
+    <span>{title}</span>
+  </nav>
+</header>

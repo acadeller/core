@@ -1,0 +1,85 @@
+---
+// LandingBase.astro - Base layout for landing page with 3-theme support
+import config from "@/config/config.json";
+import { plainify } from "@/lib/utils/textConverter";
+import LandingNav from "@/partials/LandingNav.astro";
+import LandingFooter from "@/partials/LandingFooter.astro";
+import "@/styles/main.scss";
+import { ViewTransitions } from 'astro:transitions';
+
+export interface Props {
+  title?: string;
+  meta_title?: string;
+  description?: string;
+  image?: string;
+  noindex?: boolean;
+  canonical?: string;
+}
+
+const { title, meta_title, description, image, noindex, canonical } = Astro.props;
+
+const pageTitle = plainify(meta_title || title || "Acadeller · Software Studio");
+const pageDescription = plainify(description || "A software studio turning ambitious product ideas into shipped reality — web platforms, mobile apps, and AI tools.");
+---
+
+<!DOCTYPE html>
+<html lang="en" data-theme="paper">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href={config.site.favicon} />
+
+    <!-- Theme initialization - prevent flash -->
+    <script is:inline>
+      (function() {
+        const theme = localStorage.getItem('acadeller.theme') || 'paper';
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
+
+    <!-- Title -->
+    <title>{pageTitle}</title>
+
+    <!-- Canonical -->
+    {canonical && <link rel="canonical" href={canonical} />}
+
+    <!-- No index -->
+    {noindex && <meta name="robots" content="noindex,nofollow" />}
+
+    <!-- Meta description -->
+    <meta name="description" content={pageDescription} />
+
+    <!-- Theme meta -->
+    <meta name="theme-name" content="acadeller" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#faf8f3" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0e1420" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="author" content={config.metadata.meta_author} />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={`${config.site.base_url}/${Astro.url.pathname.replace("/", "")}`} />
+    <meta property="og:image" content={`${config.site.base_url}${image || config.metadata.meta_image}`} />
+
+    <!-- Twitter -->
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={`${config.site.base_url}${image || config.metadata.meta_image}`} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <ViewTransitions />
+  </head>
+  <body>
+    <div class="landing-page">
+      <LandingNav />
+      <main id="main-content">
+        <slot />
+      </main>
+      <LandingFooter />
+    </div>
+  </body>
+</html>

@@ -1,0 +1,91 @@
+---
+// LandingFooter.astro - 4-column footer for landing page
+import LampLogo from "@/components/LampLogo.astro";
+import { content, SOCIALS, type Lang } from "@/config/landing";
+
+const defaultLang: Lang = 'en';
+const t = content[defaultLang];
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="landing-footer">
+  <div class="landing-footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <LampLogo />
+        <p class="tag" data-i18n="footTag">{t.footTag}</p>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footWork">{t.footWork}</h4>
+        <ul>
+          <li><a href="https://feectory.com" target="_blank" rel="noopener">Feectory <span class="arrow">→</span></a></li>
+          <li><a href="https://apps.apple.com/es/app/nika-tcg-optcg-scanner/id6758277197" target="_blank" rel="noopener">Nika TCG Scanner <span class="arrow">→</span></a></li>
+        </ul>
+      </div>
+      <div class="footer-col" id="footer-services">
+        <h4 data-i18n="footServ">{t.footServ}</h4>
+        <ul>
+          {t.services.map(([title]) => (
+            <li><a href="#services">{title}</a></li>
+          ))}
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footSocial">{t.footSocial}</h4>
+        <ul>
+          {SOCIALS.map(([name, url]) => (
+            <li><a href={url} target="_blank" rel="noopener">{name} <span class="arrow">→</span></a></li>
+          ))}
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span data-i18n="footMeta">{t.footMeta.replace('2026', String(currentYear))}</span>
+      <a href={`mailto:${t.ctaMail}`}>{t.ctaMail}</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  import { content, type Lang } from "@/config/landing";
+
+  function updateFooterText() {
+    const lang = (window.getCurrentLang?.() || 'en') as Lang;
+    const t = content[lang];
+    const currentYear = new Date().getFullYear();
+
+    // Update text elements
+    const footTag = document.querySelector('[data-i18n="footTag"]');
+    if (footTag) footTag.textContent = t.footTag;
+
+    const footWork = document.querySelector('[data-i18n="footWork"]');
+    if (footWork) footWork.textContent = t.footWork;
+
+    const footServ = document.querySelector('[data-i18n="footServ"]');
+    if (footServ) footServ.textContent = t.footServ;
+
+    const footSocial = document.querySelector('[data-i18n="footSocial"]');
+    if (footSocial) footSocial.textContent = t.footSocial;
+
+    const footMeta = document.querySelector('[data-i18n="footMeta"]');
+    if (footMeta) footMeta.textContent = t.footMeta.replace('2026', String(currentYear));
+
+    // Update services list
+    const servicesCol = document.getElementById('footer-services');
+    if (servicesCol) {
+      const ul = servicesCol.querySelector('ul');
+      if (ul) {
+        ul.innerHTML = t.services.map(([title]) =>
+          `<li><a href="#services">${title}</a></li>`
+        ).join('');
+      }
+    }
+  }
+
+  // Update on language change
+  window.addEventListener('langchange', updateFooterText);
+
+  // Initial update
+  document.addEventListener('DOMContentLoaded', updateFooterText);
+  document.addEventListener('astro:page-load', updateFooterText);
+</script>

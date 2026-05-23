@@ -1,0 +1,63 @@
+---
+// Process.astro - 4-step process section
+import { content, type Lang } from "@/config/landing";
+
+const defaultLang: Lang = 'en';
+const t = content[defaultLang];
+---
+
+<section class="landing-section" id="process">
+  <div class="section-head">
+    <span class="section-no"><span class="bar"></span><span data-i18n="procNo">{t.procNo}</span></span>
+    <h2 class="section-title">
+      <span data-i18n="procH0">{t.procH[0]}</span><span class="accent" data-i18n="procH1">{t.procH[1]}</span>
+    </h2>
+  </div>
+  <div class="process-grid" id="process-grid">
+    {t.process.map(([no, title, desc]) => (
+      <div class="process-step">
+        <div class="no">{no}</div>
+        <div class="t">{title}</div>
+        <div class="d">{desc}</div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<script>
+  import { content, type Lang } from "@/config/landing";
+
+  function updateProcessText() {
+    const lang = (window.getCurrentLang?.() || 'en') as Lang;
+    const t = content[lang];
+
+    // Update section header
+    const procNo = document.querySelector('[data-i18n="procNo"]');
+    if (procNo) procNo.textContent = t.procNo;
+
+    const procH0 = document.querySelector('[data-i18n="procH0"]');
+    if (procH0) procH0.textContent = t.procH[0];
+
+    const procH1 = document.querySelector('[data-i18n="procH1"]');
+    if (procH1) procH1.textContent = t.procH[1];
+
+    // Update process steps
+    const processGrid = document.getElementById('process-grid');
+    if (processGrid) {
+      processGrid.innerHTML = t.process.map(([no, title, desc]) => `
+        <div class="process-step">
+          <div class="no">${no}</div>
+          <div class="t">${title}</div>
+          <div class="d">${desc}</div>
+        </div>
+      `).join('');
+    }
+  }
+
+  // Update on language change
+  window.addEventListener('langchange', updateProcessText);
+
+  // Initial update
+  document.addEventListener('DOMContentLoaded', updateProcessText);
+  document.addEventListener('astro:page-load', updateProcessText);
+</script>

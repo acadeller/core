@@ -1,0 +1,52 @@
+---
+// ContactCTA.astro - Yellow-boxed contact CTA section
+import { content, type Lang } from "@/config/landing";
+
+const defaultLang: Lang = 'en';
+const t = content[defaultLang];
+---
+
+<section class="landing-cta" id="contact">
+  <div class="cta-eyebrow" data-i18n="ctaEyebrow">{t.ctaEyebrow}</div>
+  <h2>
+    <span data-i18n="ctaH0">{t.ctaH[0]}</span><span class="accent" data-i18n="ctaH1">{t.ctaH[1]}</span>
+  </h2>
+  <p class="cta-sub" data-i18n="ctaSub">{t.ctaSub}</p>
+  <a class="cta-mail" href={`mailto:${t.ctaMail}`}>
+    <span data-i18n="ctaMail">{t.ctaMail}</span>
+    <svg class="landing-btn-arrow" viewBox="0 0 14 14" fill="none">
+      <path d="M3 7h8M7.5 3.5L11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </a>
+</section>
+
+<script>
+  import { content, type Lang } from "@/config/landing";
+
+  function updateCtaText() {
+    const lang = (window.getCurrentLang?.() || 'en') as Lang;
+    const t = content[lang];
+
+    const ctaEyebrow = document.querySelector('[data-i18n="ctaEyebrow"]');
+    if (ctaEyebrow) ctaEyebrow.textContent = t.ctaEyebrow;
+
+    const ctaH0 = document.querySelector('[data-i18n="ctaH0"]');
+    if (ctaH0) ctaH0.textContent = t.ctaH[0];
+
+    const ctaH1 = document.querySelector('[data-i18n="ctaH1"]');
+    if (ctaH1) ctaH1.textContent = t.ctaH[1];
+
+    const ctaSub = document.querySelector('[data-i18n="ctaSub"]');
+    if (ctaSub) ctaSub.textContent = t.ctaSub;
+
+    const ctaMail = document.querySelector('[data-i18n="ctaMail"]');
+    if (ctaMail) ctaMail.textContent = t.ctaMail;
+  }
+
+  // Update on language change
+  window.addEventListener('langchange', updateCtaText);
+
+  // Initial update
+  document.addEventListener('DOMContentLoaded', updateCtaText);
+  document.addEventListener('astro:page-load', updateCtaText);
+</script>

@@ -1,0 +1,73 @@
+---
+// Services.astro - Services section with hover effects
+import { content, type Lang } from "@/config/landing";
+
+const defaultLang: Lang = 'en';
+const t = content[defaultLang];
+---
+
+<section class="landing-section" id="services">
+  <div class="section-head">
+    <span class="section-no"><span class="bar"></span><span data-i18n="servNo">{t.servNo}</span></span>
+    <h2 class="section-title">
+      <span data-i18n="servH0">{t.servH[0]}</span><span class="accent" data-i18n="servH1">{t.servH[1]}</span>
+    </h2>
+  </div>
+  <div class="services-list" id="services-list">
+    {t.services.map(([title, desc], i) => (
+      <a class="service-row" href="#contact">
+        <span class="service-no">0{i+1}</span>
+        <h3 class="service-title">{title}</h3>
+        <p class="service-desc">{desc}</p>
+        <span class="service-arrow">
+          <svg viewBox="0 0 14 14" fill="none">
+            <path d="M3 7h8M7.5 3.5L11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </a>
+    ))}
+  </div>
+</section>
+
+<script>
+  import { content, type Lang } from "@/config/landing";
+
+  function updateServicesText() {
+    const lang = (window.getCurrentLang?.() || 'en') as Lang;
+    const t = content[lang];
+
+    // Update section header
+    const servNo = document.querySelector('[data-i18n="servNo"]');
+    if (servNo) servNo.textContent = t.servNo;
+
+    const servH0 = document.querySelector('[data-i18n="servH0"]');
+    if (servH0) servH0.textContent = t.servH[0];
+
+    const servH1 = document.querySelector('[data-i18n="servH1"]');
+    if (servH1) servH1.textContent = t.servH[1];
+
+    // Update services list
+    const servicesList = document.getElementById('services-list');
+    if (servicesList) {
+      servicesList.innerHTML = t.services.map(([title, desc], i) => `
+        <a class="service-row" href="#contact">
+          <span class="service-no">0${i+1}</span>
+          <h3 class="service-title">${title}</h3>
+          <p class="service-desc">${desc}</p>
+          <span class="service-arrow">
+            <svg viewBox="0 0 14 14" fill="none">
+              <path d="M3 7h8M7.5 3.5L11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </a>
+      `).join('');
+    }
+  }
+
+  // Update on language change
+  window.addEventListener('langchange', updateServicesText);
+
+  // Initial update
+  document.addEventListener('DOMContentLoaded', updateServicesText);
+  document.addEventListener('astro:page-load', updateServicesText);
+</script>
