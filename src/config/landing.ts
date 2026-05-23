@@ -90,7 +90,7 @@ export const content: Record<Lang, LandingContent> = {
     feectory: {
       tag: "Featured",
       type: "Web · B2B Platform",
-      year: "2025",
+      year: "2026",
       title: "Feectory",
       desc: "A B2B platform we designed and built from zero — onboarding, dashboards, billing, the works. Replaced three spreadsheets and a Notion doc.",
       kv: [["Role", "Design + Build"], ["Stack", "Next.js · Postgres"], ["Timeline", "14 weeks"], ["Status", "Live"]],
@@ -100,7 +100,7 @@ export const content: Record<Lang, LandingContent> = {
     nika: {
       tag: "New",
       type: "Mobile · AI",
-      year: "2025",
+      year: "2026",
       title: "Nika TCG Scanner",
       desc: "Real-time One Piece TCG card recognition for iOS. Point your camera, get the card, the price, and your collection updated — all on-device.",
       kv: [["Role", "Design + Build"], ["Stack", "Swift · CoreML"], ["Platform", "iOS"], ["Status", "App Store"]],
@@ -167,7 +167,7 @@ export const content: Record<Lang, LandingContent> = {
     feectory: {
       tag: "Destacado",
       type: "Web · Plataforma B2B",
-      year: "2025",
+      year: "2026",
       title: "Feectory",
       desc: "Una plataforma B2B que diseñamos y construimos desde cero — onboarding, dashboards, facturación, todo. Reemplazó tres hojas de cálculo y un Notion.",
       kv: [["Rol", "Diseño + Build"], ["Stack", "Next.js · Postgres"], ["Plazo", "14 semanas"], ["Estado", "Live"]],
@@ -177,7 +177,7 @@ export const content: Record<Lang, LandingContent> = {
     nika: {
       tag: "Nuevo",
       type: "Móvil · IA",
-      year: "2025",
+      year: "2026",
       title: "Nika TCG Scanner",
       desc: "Reconocimiento de cartas One Piece TCG en tiempo real para iOS. Apunta la cámara, obtén la carta, el precio y tu colección actualizada — todo en el dispositivo.",
       kv: [["Rol", "Diseño + Build"], ["Stack", "Swift · CoreML"], ["Plataforma", "iOS"], ["Estado", "App Store"]],

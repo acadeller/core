@@ -701,8 +701,15 @@
   background: color-mix(in srgb, var(--ink) 4%, var(--paper));
   border: 1.5px solid var(--ink);
   overflow: hidden;
-  aspect-ratio: 4/3;
+  aspect-ratio: 16/10;
   box-shadow: 6px 6px 0 var(--ink);
+}
+
+.work-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
 }
 
 .work-visual::after {

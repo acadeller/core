@@ -1,8 +1,6 @@
 ---
 // Work.astro - Portfolio section with project cards
 import { content, type Lang } from "@/config/landing";
-import FeectoryMock from "./FeectoryMock.astro";
-import NikaMock from "./NikaMock.astro";
 
 const defaultLang: Lang = 'en';
 const t = content[defaultLang];
@@ -19,7 +17,7 @@ const t = content[defaultLang];
   <!-- Feectory Project -->
   <article class="work-feature" id="work-feectory">
     <div class="work-visual">
-      <FeectoryMock />
+      <img src="/images/feectory-preview.png" alt="Feectory - The growth factory for app developers" loading="lazy" />
     </div>
     <div class="work-meta">
       <div class="work-tag-row">
@@ -72,7 +70,7 @@ const t = content[defaultLang];
       </a>
     </div>
     <div class="work-visual">
-      <NikaMock />
+      <img src="/images/nika-preview.png" alt="Nika TCG - One Piece Card Game Scanner" loading="lazy" />
     </div>
   </article>
 </section>
