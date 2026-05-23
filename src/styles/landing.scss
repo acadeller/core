@@ -65,6 +65,16 @@
   min-height: 100vh;
 }
 
+/* Override Tailwind dark mode heading colors - landing page uses its own theme system */
+.landing-page h1,
+.landing-page h2,
+.landing-page h3,
+.landing-page h4,
+.landing-page h5,
+.landing-page h6 {
+  color: var(--ink);
+}
+
 /* Paper grid texture background */
 .landing-page::before {
   content: "";
