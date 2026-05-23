@@ -15,11 +15,12 @@ const currentYear = new Date().getFullYear();
         <LampLogo />
         <p class="tag" data-i18n="footTag">{t.footTag}</p>
       </div>
-      <div class="footer-col">
-        <h4 data-i18n="footWork">{t.footWork}</h4>
+      <div class="footer-col" id="footer-links">
+        <h4 data-i18n="footLinks">{t.footLinks}</h4>
         <ul>
-          <li><a href="https://feectory.com" target="_blank" rel="noopener">Feectory <span class="arrow">→</span></a></li>
-          <li><a href="https://apps.apple.com/es/app/nika-tcg-optcg-scanner/id6758277197" target="_blank" rel="noopener">Nika TCG Scanner <span class="arrow">→</span></a></li>
+          {t.footLinksList.map(([title, url]) => (
+            <li><a href={url}>{title}</a></li>
+          ))}
         </ul>
       </div>
       <div class="footer-col" id="footer-services">
@@ -58,8 +59,19 @@ const currentYear = new Date().getFullYear();
     const footTag = document.querySelector('[data-i18n="footTag"]');
     if (footTag) footTag.textContent = t.footTag;
 
-    const footWork = document.querySelector('[data-i18n="footWork"]');
-    if (footWork) footWork.textContent = t.footWork;
+    const footLinks = document.querySelector('[data-i18n="footLinks"]');
+    if (footLinks) footLinks.textContent = t.footLinks;
+
+    // Update links list
+    const linksCol = document.getElementById('footer-links');
+    if (linksCol) {
+      const ul = linksCol.querySelector('ul');
+      if (ul) {
+        ul.innerHTML = t.footLinksList.map(([title, url]) =>
+          `<li><a href="${url}">${title}</a></li>`
+        ).join('');
+      }
+    }
 
     const footServ = document.querySelector('[data-i18n="footServ"]');
     if (footServ) footServ.textContent = t.footServ;

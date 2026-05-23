@@ -1,13 +1,32 @@
 ---
-// BlogPageHeader.astro - Page header for blog pages
+// BlogPageHeader.astro - Page header for blog pages with i18n support
+import { content, type Lang } from "@/config/landing";
+
 const { title } = Astro.props;
+const t = content.en; // Default to English for SSR
 ---
 
 <header class="blog-header">
   <h1>{title}</h1>
   <nav class="breadcrumb">
-    <a href="/">Inicio</a>
+    <a href="/" data-i18n="blogBreadcrumbHome">{t.blog.home}</a>
     <span>/</span>
     <span>{title}</span>
   </nav>
 </header>
+
+<script>
+  import { content, type Lang } from '@/config/landing';
+
+  function updateBlogHeaderText() {
+    const lang = ((window as any).getCurrentLang?.() || 'en') as Lang;
+    const t = content[lang];
+
+    const homeLink = document.querySelector('[data-i18n="blogBreadcrumbHome"]');
+    if (homeLink) homeLink.textContent = t.blog.home;
+  }
+
+  window.addEventListener('langchange', updateBlogHeaderText);
+  document.addEventListener('DOMContentLoaded', updateBlogHeaderText);
+  document.addEventListener('astro:page-load', updateBlogHeaderText);
+</script>

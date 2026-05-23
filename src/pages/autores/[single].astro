@@ -1,11 +1,11 @@
 ---
-import BlogCard from "@/components/BlogCard.astro";
-import Social from "@/components/Social.astro";
+import BlogCard from "@/layouts/components/BlogCard.astro";
 import config from "@/config/config.json";
-import Base from "@/layouts/Base.astro";
+import BlogBase from "@/layouts/BlogBase.astro";
 import { getSinglePage } from "@/lib/contentParser.astro";
 import { slugify } from "@/lib/utils/textConverter";
 import { Image } from "astro:assets";
+import { content, type Lang } from "@/config/landing";
 
 export async function getStaticPaths() {
   const authors = await getSinglePage("autores");
@@ -27,49 +27,336 @@ const posts = await getSinglePage(blog_folder);
 const postFilterByAuthor = posts.filter(
   (post) => slugify(post.data.author) === slugify(title),
 );
+
+// Default to English for SSR
+const t = content.en;
 ---
 
-<Base
+<BlogBase
   title={title}
   meta_title={meta_title}
   description={description}
   image={image}
 >
-  <section class="section-sm pb-0">
-    <div class="container">
-      <div
-        class="row justify-center border-b border-border pb-14 dark:border-darkmode-border"
-      >
-        <div class="text-center lg:col-4">
-          {
-            image && (
-              <Image
-                src={image}
-                class="mx-auto mb-10 rounded"
-                height={200}
-                width={200}
-                alt={title}
-                format="webp"
-              />
-            )
-          }
-          <h1 class="h3 mb-6">{title}</h1>
-          <div class="content">
-            <Content />
-          </div>
-          <Social source={social} className="social-icons" />
-        </div>
-      </div>
+  <!-- Author Header -->
+  <header class="author-header">
+    <div class="author-header-inner">
+      <nav class="breadcrumb">
+        <a href="/" data-i18n="authorBreadcrumbHome">{t.blog.home}</a>
+        <span>/</span>
+        <a href="/autores" data-i18n="authorBreadcrumbAuthors">{t.blog.authors}</a>
+        <span>/</span>
+        <span>{title}</span>
+      </nav>
+    </div>
+  </header>
 
-      <div class="row justify-center pb-16 pt-14">
+  <!-- Author Profile -->
+  <section class="author-profile">
+    <div class="author-card">
+      {
+        image && (
+          <div class="author-image">
+            <Image
+              src={image}
+              height={160}
+              width={160}
+              alt={title}
+              format="webp"
+            />
+          </div>
+        )
+      }
+      <div class="author-info">
+        <h1>{title}</h1>
+        <div class="author-bio">
+          <Content />
+        </div>
         {
-          postFilterByAuthor.map((post) => (
-            <div class="mb-12 md:col-6 lg:col-4">
-              <BlogCard data={post} />
+          social && social.length > 0 && (
+            <div class="author-socials">
+              {social.map((s: { name: string; link: string }) => (
+                <a href={s.link} target="_blank" rel="noopener noreferrer" class="social-link">
+                  {s.name}
+                  <svg viewBox="0 0 14 14" fill="none" width="12" height="12">
+                    <path d="M4 10L10 4M10 4H5M10 4v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </a>
+              ))}
             </div>
-          ))
+          )
         }
       </div>
     </div>
   </section>
-</Base>
+
+  <!-- Author Posts -->
+  {
+    postFilterByAuthor.length > 0 && (
+      <section class="author-posts">
+        <div class="section-head">
+          <span class="section-no">
+            <span class="bar" />
+            <span data-i18n="authorPostsLabel">{t.blog.authorPosts}</span>
+          </span>
+          <h2 class="section-title" data-i18n="authorPostsTitle">{t.blog.articlesByAuthor}</h2>
+        </div>
+        <div class="blog-grid">
+          {postFilterByAuthor.map((post) => (
+            <BlogCard data={post} />
+          ))}
+        </div>
+      </section>
+    )
+  }
+</BlogBase>
+
+<style>
+  /* Author Header */
+  .author-header {
+    padding: 100px 56px 40px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  @media (max-width: 900px) {
+    .author-header {
+      padding: 60px 24px 24px;
+    }
+  }
+
+  .author-header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  .breadcrumb a {
+    color: var(--ink-3);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .breadcrumb a:hover {
+    color: var(--ink);
+  }
+
+  /* Author Profile */
+  .author-profile {
+    padding: 60px 56px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 900px) {
+    .author-profile {
+      padding: 40px 24px;
+    }
+  }
+
+  .author-card {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    background: var(--paper);
+    border: 1.5px solid var(--ink);
+    box-shadow: 8px 8px 0 var(--ink);
+    padding: 48px;
+  }
+
+  @media (max-width: 768px) {
+    .author-card {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 32px 24px;
+      box-shadow: 6px 6px 0 var(--ink);
+    }
+  }
+
+  .author-image {
+    flex-shrink: 0;
+    width: 160px;
+    height: 160px;
+    border: 1.5px solid var(--ink);
+    box-shadow: 4px 4px 0 var(--acc);
+    overflow: hidden;
+  }
+
+  [data-theme="bw"] .author-image {
+    box-shadow: 4px 4px 0 var(--ink);
+  }
+
+  .author-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .author-info {
+    flex: 1;
+  }
+
+  .author-info h1 {
+    font-size: clamp(32px, 4vw, 48px);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    font-weight: 700;
+    margin: 0 0 16px;
+    color: var(--ink);
+  }
+
+  .author-bio {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--ink-2);
+    margin-bottom: 24px;
+  }
+
+  .author-bio :global(p) {
+    margin: 0;
+  }
+
+  .author-socials {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 768px) {
+    .author-socials {
+      justify-content: center;
+    }
+  }
+
+  .social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    text-decoration: none;
+    padding: 8px 14px;
+    border: 1.5px solid var(--ink);
+    transition: all 0.15s;
+  }
+
+  .social-link svg {
+    opacity: 0;
+    transition: opacity 0.15s, transform 0.15s;
+  }
+
+  .social-link:hover {
+    background: var(--acc);
+    color: var(--acc-ink);
+    box-shadow: 3px 3px 0 var(--ink);
+    transform: translate(-1px, -1px);
+  }
+
+  [data-theme="bw"] .social-link:hover {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .social-link:hover svg {
+    opacity: 1;
+    transform: translate(2px, -2px);
+  }
+
+  /* Author Posts Section */
+  .author-posts {
+    padding: 80px 56px 120px;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-top: 1px solid var(--line);
+  }
+
+  @media (max-width: 900px) {
+    .author-posts {
+      padding: 60px 24px 80px;
+    }
+  }
+
+  .section-head {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 28px;
+    align-items: end;
+    margin-bottom: 48px;
+  }
+
+  .section-no {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    color: var(--ink-3);
+    text-transform: uppercase;
+  }
+
+  .section-no .bar {
+    display: inline-block;
+    width: 22px;
+    height: 1px;
+    background: var(--ink-3);
+    vertical-align: middle;
+    margin-right: 10px;
+  }
+
+  .section-title {
+    font-size: clamp(28px, 3.5vw, 40px);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    font-weight: 700;
+    margin: 0;
+    color: var(--ink);
+  }
+
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+
+  @media (max-width: 768px) {
+    .blog-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  import { content, type Lang } from '@/config/landing';
+
+  function updateAuthorPageText() {
+    const lang = ((window as any).getCurrentLang?.() || 'en') as Lang;
+    const t = content[lang];
+
+    // Update breadcrumb
+    const homeLink = document.querySelector('[data-i18n="authorBreadcrumbHome"]');
+    if (homeLink) homeLink.textContent = t.blog.home;
+
+    const authorsLink = document.querySelector('[data-i18n="authorBreadcrumbAuthors"]');
+    if (authorsLink) authorsLink.textContent = t.blog.authors;
+
+    // Update posts section
+    const postsLabel = document.querySelector('[data-i18n="authorPostsLabel"]');
+    if (postsLabel) postsLabel.textContent = t.blog.authorPosts;
+
+    const postsTitle = document.querySelector('[data-i18n="authorPostsTitle"]');
+    if (postsTitle) postsTitle.textContent = t.blog.articlesByAuthor;
+  }
+
+  window.addEventListener('langchange', updateAuthorPageText);
+  document.addEventListener('DOMContentLoaded', updateAuthorPageText);
+  document.addEventListener('astro:page-load', updateAuthorPageText);
+</script>

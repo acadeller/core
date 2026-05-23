@@ -2,6 +2,21 @@
 
 export type Lang = 'en' | 'es';
 
+export interface BlogContent {
+  title: string;
+  home: string;
+  authors: string;
+  authorPosts: string;
+  articlesByAuthor: string;
+  categories: string;
+  tags: string;
+  readMore: string;
+  relatedPosts: string;
+  share: string;
+  previous: string;
+  next: string;
+}
+
 export interface LandingContent {
   nav: string[];
   cta: string;
@@ -43,11 +58,13 @@ export interface LandingContent {
   ctaSub: string;
   ctaMail: string;
   footTag: string;
-  footWork: string;
+  footLinks: string;
+  footLinksList: [string, string][];
   footServ: string;
   footSocial: string;
   footMeta: string;
   seeWork: string;
+  blog: BlogContent;
 }
 
 export const content: Record<Lang, LandingContent> = {
@@ -103,11 +120,30 @@ export const content: Record<Lang, LandingContent> = {
     ctaSub: "Have a project in mind? Send us a brief and we'll get back to you within one business day.",
     ctaMail: "contacto@acadeller.com",
     footTag: "A small software studio building thoughtful products for ambitious teams. Spain.",
-    footWork: "Work",
+    footLinks: "Links",
+    footLinksList: [
+      ["Home", "/"],
+      ["Blog", "/blog"],
+      ["Contact", "/contacto"],
+    ],
     footServ: "Services",
     footSocial: "Find us",
     footMeta: "© 2026 Acadeller · Crafted in Spain",
     seeWork: "See our work",
+    blog: {
+      title: "Blog",
+      home: "Home",
+      authors: "Authors",
+      authorPosts: "Articles",
+      articlesByAuthor: "Articles by this author",
+      categories: "Categories",
+      tags: "Tags",
+      readMore: "Read more",
+      relatedPosts: "Related posts",
+      share: "Share",
+      previous: "Previous",
+      next: "Next",
+    },
   },
   es: {
     nav: ["Trabajos", "Servicios", "Proceso", "Contacto"],
@@ -161,20 +197,39 @@ export const content: Record<Lang, LandingContent> = {
     ctaSub: "¿Tienes un proyecto en mente? Envíanos un brief y te responderemos en un día laborable.",
     ctaMail: "contacto@acadeller.com",
     footTag: "Un estudio de software pequeño que construye productos cuidados para equipos ambiciosos.",
-    footWork: "Trabajos",
+    footLinks: "Enlaces",
+    footLinksList: [
+      ["Inicio", "/"],
+      ["Blog", "/blog"],
+      ["Contacto", "/contacto"],
+    ],
     footServ: "Servicios",
     footSocial: "Encuéntranos",
     footMeta: "© 2026 Acadeller · Hecho en España",
     seeWork: "Ver trabajos",
+    blog: {
+      title: "Blog",
+      home: "Inicio",
+      authors: "Autores",
+      authorPosts: "Artículos",
+      articlesByAuthor: "Artículos de este autor",
+      categories: "Categorías",
+      tags: "Tags",
+      readMore: "Leer más",
+      relatedPosts: "Posts relacionados",
+      share: "Compartir",
+      previous: "Anterior",
+      next: "Siguiente",
+    },
   }
 };
 
 export const SOCIALS = [
   ["Instagram", "https://www.instagram.com/acadeller"],
-  ["X / Twitter", "https://x.com/acadeller"],
-  ["GitHub", "https://www.github.com/acadeller"],
-  ["LinkedIn", "https://www.linkedin.com/company/acadeller"],
   ["TikTok", "https://www.tiktok.com/@acadeller"],
+  ["LinkedIn", "https://www.linkedin.com/company/acadeller"],
+  ["GitHub", "https://www.github.com/acadeller"],
+  ["X / Twitter", "https://x.com/acadeller"],
 ] as const;
 
 export function getContent(lang: Lang): LandingContent {

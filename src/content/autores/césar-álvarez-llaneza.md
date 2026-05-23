@@ -4,6 +4,10 @@ email: cesaralvrzll@gmail.com
 image: "/images/cesar.jpeg"
 description: Frontend Developer y fundador de Acadeller
 social:
+  - name: x
+    icon: FaXTwitter
+    link: https://x.com/cesaralvarezll
+
   - name: github
     icon: FaGithub
     link: https://github.com/cesaralvrz

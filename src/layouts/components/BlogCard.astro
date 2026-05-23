@@ -1,7 +1,9 @@
 ---
+// BlogCard.astro - Blog card component with i18n support
 import config from "@/config/config.json";
 import { humanize, plainify, slugify } from "@/lib/utils/textConverter";
 import { Image } from "astro:assets";
+import { content, type Lang } from "@/config/landing";
 
 const {
   summary_length,
@@ -9,6 +11,7 @@ const {
 }: { summary_length: number; blog_folder: string } = config.settings;
 const { data } = Astro.props;
 const { title, image, date, author, categories } = data.data;
+const t = content.en; // Default to English for SSR
 ---
 
 <article class="blog-card">
@@ -42,10 +45,28 @@ const { title, image, date, author, categories } = data.data;
     </h3>
     <p>{plainify(data.body?.slice(0, Number(summary_length)))}...</p>
     <a class="blog-card-link" href={`/${blog_folder}/${data.slug}`}>
-      Leer más
+      <span class="read-more-text" data-i18n="blogReadMore">{t.blog.readMore}</span>
       <svg viewBox="0 0 14 14" fill="none">
         <path d="M3 7h8M7.5 3.5L11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </a>
   </div>
 </article>
+
+<script>
+  import { content, type Lang } from '@/config/landing';
+
+  function updateBlogCardText() {
+    const lang = ((window as any).getCurrentLang?.() || 'en') as Lang;
+    const t = content[lang];
+
+    // Update all "Read more" links
+    document.querySelectorAll('[data-i18n="blogReadMore"]').forEach((el) => {
+      el.textContent = t.blog.readMore;
+    });
+  }
+
+  window.addEventListener('langchange', updateBlogCardText);
+  document.addEventListener('DOMContentLoaded', updateBlogCardText);
+  document.addEventListener('astro:page-load', updateBlogCardText);
+</script>
