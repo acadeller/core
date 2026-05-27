@@ -50,3 +50,9 @@ const t = content[defaultLang];
   document.addEventListener('DOMContentLoaded', updateCtaText);
   document.addEventListener('astro:page-load', updateCtaText);
 </script>
+
+<style>
+  :global([data-theme="bw"]) .cta-eyebrow {
+    color: #ffffff !important;
+  }
+</style>

@@ -1248,8 +1248,8 @@
   position: relative;
 }
 
-[data-theme="bw"] .cta-eyebrow {
-  color: color-mix(in srgb, var(--paper) 60%, transparent);
+[data-theme="bw"] .landing-cta .cta-eyebrow {
+  color: #ffffff !important;
 }
 
 .landing-cta h2 {
@@ -1261,6 +1261,10 @@
   max-width: 720px;
   position: relative;
   color: var(--ink);
+}
+
+[data-theme="bw"] .landing-cta h2 {
+  color: #ffffff;
 }
 
 .landing-cta h2 .accent {
@@ -1278,6 +1282,10 @@
   text-decoration: underline;
   text-decoration-thickness: 4px;
   text-underline-offset: 6px;
+}
+
+[data-theme="bw"] .landing-cta h2 .accent {
+  color: #ffffff;
 }
 
 [data-theme="ink"] .landing-cta h2 .accent {
