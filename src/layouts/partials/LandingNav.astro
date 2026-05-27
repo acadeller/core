@@ -13,6 +13,22 @@ const t = content[defaultLang];
 <nav class="landing-nav">
   <div class="landing-nav-inner">
     <LampLogo />
+
+    <!-- Mobile menu toggle -->
+    <input id="landing-nav-toggle" type="checkbox" class="landing-nav-checkbox" />
+    <label for="landing-nav-toggle" class="landing-nav-toggler">
+      <svg class="landing-hamburger-icon" viewBox="0 0 20 20">
+        <title>Menu Open</title>
+        <path d="M0 3h20v2H0V3z m0 6h20v2H0V9z m0 6h20v2H0V0z"></path>
+      </svg>
+      <svg class="landing-close-icon" viewBox="0 0 20 20">
+        <title>Menu Close</title>
+        <polygon
+          points="11 9 22 9 22 11 11 11 11 22 9 22 9 11 -2 11 -2 9 9 9 9 -2 11 -2"
+          transform="rotate(45 10 10)"></polygon>
+      </svg>
+    </label>
+
     <div class="landing-nav-right">
       <LanguageSwitcher />
       <LandingThemeSwitcher />
@@ -40,10 +56,42 @@ const t = content[defaultLang];
     }
   }
 
+  function initMobileMenu() {
+    const navToggle = document.getElementById('landing-nav-toggle') as HTMLInputElement;
+    const navRight = document.querySelector('.landing-nav-right');
+
+    if (!navToggle || !navRight) return;
+
+    // Close menu when clicking on CTA button
+    const ctaBtn = navRight.querySelector('.landing-btn');
+    if (ctaBtn) {
+      ctaBtn.addEventListener('click', () => {
+        navToggle.checked = false;
+      });
+    }
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement;
+      const isNavClick = target.closest('.landing-nav-inner');
+
+      if (!isNavClick && navToggle.checked) {
+        navToggle.checked = false;
+      }
+    });
+  }
+
   // Update on language change
   window.addEventListener('langchange', updateNavText);
 
   // Initial update
-  document.addEventListener('DOMContentLoaded', updateNavText);
-  document.addEventListener('astro:page-load', updateNavText);
+  document.addEventListener('DOMContentLoaded', () => {
+    updateNavText();
+    initMobileMenu();
+  });
+
+  document.addEventListener('astro:page-load', () => {
+    updateNavText();
+    initMobileMenu();
+  });
 </script>
