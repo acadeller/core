@@ -4,19 +4,29 @@
   "description": "Enciende tu carrera de desarrollador",
   "author": "César Álvarez Llaneza",
   "license": "MIT",
-  "packageManager": "yarn@1.22.19",
+  "packageManager": "pnpm@10.20.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@parcel/watcher",
+      "esbuild",
+      "sharp"
+    ]
+  },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "format": "prettier -w ./src",
     "generate-json": "node scripts/jsonGenerator.js",
-    "remove-darkmode": "node scripts/removeDarkmode.js && yarn format"
+    "remove-darkmode": "node scripts/removeDarkmode.js && pnpm format"
   },
   "dependencies": {
     "@astrojs/mdx": "^2.3.1",
     "@astrojs/react": "^3.0.4",
     "@astrojs/rss": "^3.0.0",
-    "@astrojs/sitemap": "^3.0.2",
+    "@astrojs/sitemap": "3.4.1",
     "@astrojs/tailwind": "^5.0.2",
     "@astrojs/vue": "^4.0.6",
     "astro": "^4.0.8",

@@ -1,0 +1,58 @@
+---
+// AppFeatures.astro - Feature grid for the Acadeller Spark app page
+import { content, type Lang } from "@/config/landing";
+
+const defaultLang: Lang = 'en';
+const t = content[defaultLang].app;
+---
+
+<section class="landing-section" id="features">
+  <div class="section-head">
+    <span class="section-no"><span class="bar"></span><span data-i18n="appFeatNo">{t.featNo}</span></span>
+    <h2 class="section-title">
+      <span data-i18n="appFeatH0">{t.featH[0]}</span><span class="accent" data-i18n="appFeatH1">{t.featH[1]}</span>
+    </h2>
+  </div>
+  <div class="app-feature-grid" id="app-feature-grid">
+    {t.features.map(([title, desc], i) => (
+      <div class="app-feature">
+        <span class="app-feature-no">0{i + 1}</span>
+        <h3 class="app-feature-title">{title}</h3>
+        <p class="app-feature-desc">{desc}</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+<script>
+  import { content, type Lang } from "@/config/landing";
+
+  function updateAppFeaturesText() {
+    const lang = (window.getCurrentLang?.() || 'en') as Lang;
+    const t = content[lang].app;
+
+    const set = (key: string, value: string) => {
+      const el = document.querySelector(`[data-i18n="${key}"]`);
+      if (el) el.textContent = value;
+    };
+
+    set('appFeatNo', t.featNo);
+    set('appFeatH0', t.featH[0]);
+    set('appFeatH1', t.featH[1]);
+
+    const grid = document.getElementById('app-feature-grid');
+    if (grid) {
+      grid.innerHTML = t.features.map(([title, desc], i) => `
+        <div class="app-feature">
+          <span class="app-feature-no">0${i + 1}</span>
+          <h3 class="app-feature-title">${title}</h3>
+          <p class="app-feature-desc">${desc}</p>
+        </div>
+      `).join('');
+    }
+  }
+
+  window.addEventListener('langchange', updateAppFeaturesText);
+  document.addEventListener('DOMContentLoaded', updateAppFeaturesText);
+  document.addEventListener('astro:page-load', updateAppFeaturesText);
+</script>
