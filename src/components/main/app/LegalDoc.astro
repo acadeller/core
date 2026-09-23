@@ -1,0 +1,116 @@
+---
+// LegalDoc.astro - Renders a legal document (privacy / terms) from the landing config
+import { content, type Lang } from "@/config/landing";
+
+export interface Props {
+  doc: "privacy" | "terms";
+}
+
+const { doc } = Astro.props;
+
+const defaultLang: Lang = 'en';
+const app = content[defaultLang].app;
+const t = app[doc];
+---
+
+<article class="legal-page" data-legal-doc={doc}>
+  <header class="legal-head">
+    <a class="legal-back" href="/app" data-i18n="legalBack">{app.backToSite}</a>
+    <span class="legal-kicker" data-i18n="legalKicker">{app.name}</span>
+    <h1 class="legal-title" data-i18n="legalTitle">{t.title}</h1>
+    <p class="legal-updated">
+      <span data-i18n="legalUpdatedLabel">{t.updatedLabel}</span>:
+      <span data-i18n="legalUpdated">{t.updated}</span>
+    </p>
+    <p class="legal-intro" data-i18n="legalIntro">{t.intro}</p>
+  </header>
+
+  <div class="legal-body" id="legal-body">
+    {t.sections.map((section) => (
+      <section class="legal-section">
+        <h2>{section.heading}</h2>
+        {section.body.map((p) => <p>{p}</p>)}
+        {section.bullets && (
+          <ul>
+            {section.bullets.map((b) => <li>{b}</li>)}
+          </ul>
+        )}
+      </section>
+    ))}
+    <section class="legal-section legal-contact">
+      <h2 data-i18n="legalContactHeading">{t.contactHeading}</h2>
+      <p data-i18n="legalContactBody">{t.contactBody}</p>
+    </section>
+  </div>
+
+  <nav class="legal-footer-nav">
+    <a href="/app/privacy" data-i18n="legalNavPrivacy">{app.privacyLabel}</a>
+    <span aria-hidden="true">·</span>
+    <a href="/app/terms" data-i18n="legalNavTerms">{app.termsLabel}</a>
+  </nav>
+</article>
+
+<script>
+  import { content, type Lang } from "@/config/landing";
+
+  function escapeHtml(value: string) {
+    return value
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  function updateLegalText() {
+    const root = document.querySelector('[data-legal-doc]') as HTMLElement | null;
+    if (!root) return;
+
+    const doc = root.dataset.legalDoc as 'privacy' | 'terms';
+    const lang = (window.getCurrentLang?.() || 'en') as Lang;
+    const app = content[lang].app;
+    const t = app[doc];
+
+    const set = (key: string, value: string) => {
+      const el = document.querySelector(`[data-i18n="${key}"]`);
+      if (el) el.textContent = value;
+    };
+
+    set('legalBack', app.backToSite);
+    set('legalKicker', app.name);
+    set('legalTitle', t.title);
+    set('legalUpdatedLabel', t.updatedLabel);
+    set('legalUpdated', t.updated);
+    set('legalIntro', t.intro);
+    set('legalContactHeading', t.contactHeading);
+    set('legalContactBody', t.contactBody);
+    set('legalNavPrivacy', app.privacyLabel);
+    set('legalNavTerms', app.termsLabel);
+
+    // Update the document title so the tab matches the language too
+    document.title = `${t.title} · ${app.name}`;
+
+    const body = document.getElementById('legal-body');
+    if (body) {
+      const sections = t.sections.map((section) => `
+        <section class="legal-section">
+          <h2>${escapeHtml(section.heading)}</h2>
+          ${section.body.map((p) => `<p>${escapeHtml(p)}</p>`).join('')}
+          ${section.bullets ? `<ul>${section.bullets.map((b) => `<li>${escapeHtml(b)}</li>`).join('')}</ul>` : ''}
+        </section>
+      `).join('');
+
+      const contact = `
+        <section class="legal-section legal-contact">
+          <h2 data-i18n="legalContactHeading">${escapeHtml(t.contactHeading)}</h2>
+          <p data-i18n="legalContactBody">${escapeHtml(t.contactBody)}</p>
+        </section>
+      `;
+
+      body.innerHTML = sections + contact;
+    }
+  }
+
+  window.addEventListener('langchange', updateLegalText);
+  document.addEventListener('DOMContentLoaded', updateLegalText);
+  document.addEventListener('astro:page-load', updateLegalText);
+</script>

@@ -1,0 +1,16 @@
+---
+// Acadeller Spark - Terms of Service
+import LandingBase from "@/layouts/LandingBase.astro";
+import LegalDoc from "../../components/main/app/LegalDoc.astro";
+import { content } from "@/config/landing";
+
+const app = content.en.app;
+---
+
+<LandingBase
+  title={`${app.terms.title} · ${app.name}`}
+  description={app.terms.intro}
+  canonical="https://acadeller.com/app/terms"
+>
+  <LegalDoc doc="terms" />
+</LandingBase>

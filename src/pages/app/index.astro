@@ -1,0 +1,24 @@
+---
+// Acadeller Spark - app product page
+import LandingBase from "@/layouts/LandingBase.astro";
+import AppHero from "../../components/main/app/AppHero.astro";
+import AppFeatures from "../../components/main/app/AppFeatures.astro";
+import AppHow from "../../components/main/app/AppHow.astro";
+import AppPrivacy from "../../components/main/app/AppPrivacy.astro";
+import AppCTA from "../../components/main/app/AppCTA.astro";
+import { content } from "@/config/landing";
+
+const app = content.en.app;
+---
+
+<LandingBase
+  title={`${app.name} · ${app.tagline}`}
+  description={app.heroSub}
+  canonical="https://acadeller.com/app"
+>
+  <AppHero />
+  <AppFeatures />
+  <AppHow />
+  <AppPrivacy />
+  <AppCTA />
+</LandingBase>

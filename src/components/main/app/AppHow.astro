@@ -1,0 +1,58 @@
+---
+// AppHow.astro - "How it works" steps for the Acadeller Spark app page
+import { content, type Lang } from "@/config/landing";
+
+const defaultLang: Lang = 'en';
+const t = content[defaultLang].app;
+---
+
+<section class="landing-section" id="how-it-works">
+  <div class="section-head">
+    <span class="section-no"><span class="bar"></span><span data-i18n="appHowNo">{t.howNo}</span></span>
+    <h2 class="section-title">
+      <span data-i18n="appHowH0">{t.howH[0]}</span><span class="accent" data-i18n="appHowH1">{t.howH[1]}</span>
+    </h2>
+  </div>
+  <div class="process-grid" id="app-how-grid">
+    {t.how.map(([no, title, desc]) => (
+      <div class="process-step">
+        <div class="no">{no}</div>
+        <div class="t">{title}</div>
+        <div class="d">{desc}</div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<script>
+  import { content, type Lang } from "@/config/landing";
+
+  function updateAppHowText() {
+    const lang = (window.getCurrentLang?.() || 'en') as Lang;
+    const t = content[lang].app;
+
+    const set = (key: string, value: string) => {
+      const el = document.querySelector(`[data-i18n="${key}"]`);
+      if (el) el.textContent = value;
+    };
+
+    set('appHowNo', t.howNo);
+    set('appHowH0', t.howH[0]);
+    set('appHowH1', t.howH[1]);
+
+    const grid = document.getElementById('app-how-grid');
+    if (grid) {
+      grid.innerHTML = t.how.map(([no, title, desc]) => `
+        <div class="process-step">
+          <div class="no">${no}</div>
+          <div class="t">${title}</div>
+          <div class="d">${desc}</div>
+        </div>
+      `).join('');
+    }
+  }
+
+  window.addEventListener('langchange', updateAppHowText);
+  document.addEventListener('DOMContentLoaded', updateAppHowText);
+  document.addEventListener('astro:page-load', updateAppHowText);
+</script>

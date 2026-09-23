@@ -1,0 +1,55 @@
+---
+// AppCTA.astro - Early-access CTA for the Acadeller Spark app page
+import { content, type Lang } from "@/config/landing";
+
+const defaultLang: Lang = 'en';
+const t = content[defaultLang];
+const app = t.app;
+---
+
+<section class="landing-cta" id="spark-cta">
+  <div class="cta-eyebrow" data-i18n="appCtaEyebrow">{app.ctaEyebrow}</div>
+  <h2>
+    <span data-i18n="appCtaH0">{app.ctaH[0]}</span><span class="accent" data-i18n="appCtaH1">{app.ctaH[1]}</span>
+  </h2>
+  <p class="cta-sub" data-i18n="appCtaSub">{app.ctaSub}</p>
+  <a class="cta-mail" href={`mailto:${t.ctaMail}?subject=Acadeller%20Spark%20early%20access`}>
+    <span data-i18n="appCtaMail">{t.ctaMail}</span>
+    <svg class="landing-btn-arrow" viewBox="0 0 14 14" fill="none">
+      <path d="M3 7h8M7.5 3.5L11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </a>
+
+  <p class="app-legal-links">
+    <a href="/app/privacy" data-i18n="appPrivacyLabel">{app.privacyLabel}</a>
+    <span aria-hidden="true">·</span>
+    <a href="/app/terms" data-i18n="appTermsLabel">{app.termsLabel}</a>
+  </p>
+</section>
+
+<script>
+  import { content, type Lang } from "@/config/landing";
+
+  function updateAppCtaText() {
+    const lang = (window.getCurrentLang?.() || 'en') as Lang;
+    const t = content[lang];
+    const app = t.app;
+
+    const set = (key: string, value: string) => {
+      const el = document.querySelector(`[data-i18n="${key}"]`);
+      if (el) el.textContent = value;
+    };
+
+    set('appCtaEyebrow', app.ctaEyebrow);
+    set('appCtaH0', app.ctaH[0]);
+    set('appCtaH1', app.ctaH[1]);
+    set('appCtaSub', app.ctaSub);
+    set('appCtaMail', t.ctaMail);
+    set('appPrivacyLabel', app.privacyLabel);
+    set('appTermsLabel', app.termsLabel);
+  }
+
+  window.addEventListener('langchange', updateAppCtaText);
+  document.addEventListener('DOMContentLoaded', updateAppCtaText);
+  document.addEventListener('astro:page-load', updateAppCtaText);
+</script>

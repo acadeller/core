@@ -1,0 +1,65 @@
+---
+// AppHero.astro - Hero section for the Acadeller Spark app page
+import { content, type Lang } from "@/config/landing";
+
+const defaultLang: Lang = 'en';
+const t = content[defaultLang].app;
+---
+
+<header class="landing-hero app-hero" id="top">
+  <span class="hero-eyebrow" data-i18n="appEyebrow">{t.eyebrow}</span>
+  <h1>
+    <span data-i18n="appHeroLead">{t.heroLead}</span><br/>
+    <span class="accent" data-i18n="appHeroAccent">{t.heroAccent}</span>
+  </h1>
+  <img
+    class="app-hero-mascot"
+    src="/images/spark-mascot.png"
+    alt={t.heroImageAlt}
+    data-i18n-alt="appHeroImageAlt"
+    width="750"
+    height="900"
+    loading="eager"
+    decoding="async"
+  />
+  <p class="hero-sub" data-i18n="appHeroSub">{t.heroSub}</p>
+  <div class="hero-cta">
+    <a class="landing-btn landing-btn-accent" href="#spark-cta">
+      <span class="btn-text" data-i18n="appCtaPrimary">{t.ctaPrimary}</span>
+      <svg class="landing-btn-arrow" viewBox="0 0 14 14" fill="none">
+        <path d="M3 7h8M7.5 3.5L11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+    <a class="landing-btn landing-btn-ghost" href="/contacto">
+      <span class="btn-text" data-i18n="appCtaSecondary">{t.ctaSecondary}</span>
+    </a>
+  </div>
+</header>
+
+<script>
+  import { content, type Lang } from "@/config/landing";
+
+  function updateAppHeroText() {
+    const lang = (window.getCurrentLang?.() || 'en') as Lang;
+    const t = content[lang].app;
+
+    const set = (key: string, value: string) => {
+      const el = document.querySelector(`[data-i18n="${key}"]`);
+      if (el) el.textContent = value;
+    };
+
+    set('appEyebrow', t.eyebrow);
+    set('appHeroLead', t.heroLead);
+    set('appHeroAccent', t.heroAccent);
+    set('appHeroSub', t.heroSub);
+    set('appCtaPrimary', t.ctaPrimary);
+    set('appCtaSecondary', t.ctaSecondary);
+
+    const mascot = document.querySelector('[data-i18n-alt="appHeroImageAlt"]');
+    if (mascot) mascot.setAttribute('alt', t.heroImageAlt);
+  }
+
+  window.addEventListener('langchange', updateAppHeroText);
+  document.addEventListener('DOMContentLoaded', updateAppHeroText);
+  document.addEventListener('astro:page-load', updateAppHeroText);
+</script>

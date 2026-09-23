@@ -1,0 +1,60 @@
+---
+// AppPrivacy.astro - On-device privacy highlights for the Acadeller Spark app page
+import { content, type Lang } from "@/config/landing";
+
+const defaultLang: Lang = 'en';
+const t = content[defaultLang].app;
+---
+
+<section class="landing-section" id="privacy">
+  <div class="section-head">
+    <span class="section-no"><span class="bar"></span><span data-i18n="appPrivNo">{t.privacyNo}</span></span>
+    <h2 class="section-title">
+      <span data-i18n="appPrivH0">{t.privacyH[0]}</span><span class="accent" data-i18n="appPrivH1">{t.privacyH[1]}</span>
+    </h2>
+  </div>
+  <div class="app-privacy-grid" id="app-privacy-grid">
+    {t.privacyPoints.map(([title, desc]) => (
+      <div class="app-privacy-point">
+        <h3>{title}</h3>
+        <p>{desc}</p>
+      </div>
+    ))}
+  </div>
+  <p class="app-privacy-more">
+    <a href="/app/privacy" data-i18n="appPrivMore">{t.privacyLabel}</a>
+  </p>
+</section>
+
+<script>
+  import { content, type Lang } from "@/config/landing";
+
+  function updateAppPrivacyText() {
+    const lang = (window.getCurrentLang?.() || 'en') as Lang;
+    const t = content[lang].app;
+
+    const set = (key: string, value: string) => {
+      const el = document.querySelector(`[data-i18n="${key}"]`);
+      if (el) el.textContent = value;
+    };
+
+    set('appPrivNo', t.privacyNo);
+    set('appPrivH0', t.privacyH[0]);
+    set('appPrivH1', t.privacyH[1]);
+    set('appPrivMore', t.privacyLabel);
+
+    const grid = document.getElementById('app-privacy-grid');
+    if (grid) {
+      grid.innerHTML = t.privacyPoints.map(([title, desc]) => `
+        <div class="app-privacy-point">
+          <h3>${title}</h3>
+          <p>${desc}</p>
+        </div>
+      `).join('');
+    }
+  }
+
+  window.addEventListener('langchange', updateAppPrivacyText);
+  document.addEventListener('DOMContentLoaded', updateAppPrivacyText);
+  document.addEventListener('astro:page-load', updateAppPrivacyText);
+</script>
