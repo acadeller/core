@@ -35,27 +35,33 @@ Si te interesa [contribuir](#contribución) en este repositorio puedes hacerlo d
 
 ### 📦 Dependencias
 
-- astro 2.3+
-- node v18+
-- npm v9.5+
+- astro 4.0+
+- node v22+
+- pnpm v10+
 - tailwind v3.3+
+
+> Este proyecto usa **pnpm**. Si no lo tienes, actívalo con corepack:
+>
+> ```bash
+> corepack enable
+> ```
 
 ### ⚙️ Instalar dependencias
 
 ```bash
-npm install
+pnpm install
 ```
 
 ### ⚙️ Comando para correr el modo desarrollo
 
 ```bash
-npm run dev
+pnpm dev
 ```
 
 ### ⚙️ Comando para hacer el build
 
 ```bash
-npm run build
+pnpm build
 ```
 
 # Comunidad
